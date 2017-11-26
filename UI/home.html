@@ -16,6 +16,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
 	<!-- CSS Files -->
+     
+	<!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
 </head>
@@ -38,20 +41,13 @@
 
 	<div class="container-fluid">
     	<div class="navbar-header">
-
-    		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-    		</button>
-    		<!--<a class="navbar-brand" href="#">Brand</a>-->
     	</div>
 
     	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    		<ul class="nav navbar-nav">
+         <i  class="brand-logo"><p id="demo"></p></i>
+    		<ul class="nav navbar-nav right hide-on-med-and-down">
 				<li class="active"><a href="home.html">Home</a></li>
-        		<li><a href="#">Contact Us</a></li>
+        		<li><a href="home.html">Contact Us</a></li>
         		<li><a href="singin.html">Sign In</a></li>
         		<li><a href="#">Sign Up</a></li>
         		<!--<li class="dropdown">
@@ -71,77 +67,62 @@
 	</div>
 </nav>
 
+
+     <div class="row">
+     	<div class="col s3">
+     		<table >
+     			<tr>
+     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; ">Announcements</button></td>
+     			</tr>
+          
+          <tr>			
+     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Location</button></td>
+     			</tr>
+          <tr>  
+     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Organisation</button></td>
+     			</tr>
+          <tr>  
+     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders Status</button></td>
+     			</tr>
+          <tr>  
+     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Classification</button></td>
+     			</tr>
+     			</table>
+
+      <!--
+       	<div >
+       		<ul style="list-style: none; align-self: center;" >
+       			<li ><button class="btn btn-info"><a href="">Tenders Status</a></button></li>
+       			<li ><button class="btn btn-info"><a href="">Tenders by Organisation</a></li></button>
+       			<li ><button class="btn btn-info"><a href="">Tenders by Location</a></li></button>
+       			<li ><a href="">Tenders by Classification</a></li><br>
+       			<li ><a href="">Announcements</a></li>
+
+      		</ul>
+      	</div>-->
+      
+      	
+      	</div>
+        </div>
+       
+
+      
+    
    
-    
-    
-	    
-    <div class="wrapper; ">
-		<!--<div class="header header-filter" style="background-image: url('../assets/img/city.jpg'); background-size:20px;  background-position:right; ">-->
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-						<div class="card card-signup">
-							<form class="form" method="" action="">
-								<div class="header header-info text-center">
-									<h4>Sign In</h4>
-									<!--<div class="social-line">
-										<a href="#pablo" class="btn btn-simple btn-just-icon">
-											<i class="fa fa-facebook-square"></i>
-										</a>
-										<a href="#pablo" class="btn btn-simple btn-just-icon">
-											<i class="fa fa-twitter"></i>
-										</a>
-										<a href="#pablo" class="btn btn-simple btn-just-icon">
-											<i class="fa fa-google-plus"></i>
-										</a>
-									</div>-->
-								</div>
-								<!--<p class="text-divider">Or Be Classical</p>-->
-								<div class="content">
-
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">face</i>
-										</span>
-										<input type="text" class="form-control" placeholder="User Name...">
-									</div>
-
-									<!--<div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">email</i>
-										</span>
-										<input type="text" class="form-control" placeholder="Email...">
-									</div>-->
-
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">lock_outline</i>
-										</span>
-										<input type="password" placeholder="Password..." class="form-control" />
-									</div>
-
-									<!-- If you want to add a checkbox to this form, uncomment this code
-
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="optionsCheckboxes" checked>
-											Subscribe to newsletter
-										</label>
-									</div> -->
-								</div>
-								<div class="footer text-center">
-									<a href="#pablo" class="btn btn-simple btn-primary btn-lg">Get Started</a>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>		
-
-	</div>
-	<!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
-	<div class="main">
-		<div class="container">
+   	<div class="fixed-action-btn">
+   			<a class="btn-floating btn-large red">
+        <i class="large material-icons">more</i>
+        </a>
+        <ul>
+          <li><a href="#" class="btn-floating red btn-large"><i class="large material-icons">help</a></li>
+          <li><a href="#" class="btn-floating blue btn-large"><i class="large material-icons">search</i></a></li>
+          <li><a href="#" class="btn-floating orange btn-large"><i class="large material-icons">feedback</i></a></li>
+          <li><a href="#" class="btn-floating green btn-large"><i class="large material-icons">FAQ</i></a></li>
+          
+          </ul>
+   	</div>
+	
+	
 
 			<!-- here you can add your content -->
 			
@@ -151,6 +132,14 @@
 
 
 </body>
+  <script>
+  var d = new Date();
+  document.getElementById("demo").innerHTML = d.toUTCString();
+  </script>
+	<!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+  
 
 	<!--   Core JS Files   -->
 	<script src="assets/js/jquery.min.js" type="text/javascript"></script>
@@ -165,5 +154,6 @@
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="assets/js/material-kit.js" type="text/javascript"></script>
+
 
 </html>

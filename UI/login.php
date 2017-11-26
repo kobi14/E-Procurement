@@ -1,3 +1,63 @@
+
+<?php
+include "connect.php";
+include "functions.php";
+$username=$pass=$user="";
+$errusername=$errpass=$errlogin="";
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["uname"])) {
+        $errusername = "Username is required";
+    } else {
+      $user=$_POST['uname'];
+		if(!($user[0]=="b" or $user[0]=="B" or $user[0]=="p" or $user[0]=="P" or $user[0]=="o" or $user[0]=="O") ){
+			$errusername="Username is invalid";
+		}else{
+			$username = mysql_real_escape_string($_POST["uname"]);
+			$errusername = validate_text_and_numbers($username);
+      }
+    }
+    if (empty($_POST["pass"])) {
+        $errpass = "Password is required";
+    } else {
+        $pass = mysql_real_escape_string($_POST["pass"]);
+        $errpass = validate_text_and_numbers($pass);
+    }
+    if($errusername=="" and $errpass==""){
+        $errlogin=user_login($username,$pass);
+    }
+}
+
+?>
+<!--
+<html>
+<head>
+<title>
+Login
+</title>
+</head>
+<body>
+<form action="<?php //echo $_SERVER["PHP_SELF"];?>" method="POST">
+username <input type="text" name="uname" placeholder="User Name..." value="<?php// echo $username;?>" />
+<br>
+<?php //echo $errusername; ?>
+<br>
+
+Password <input type="password" name="pass" placeholder="Password..." value="<?php// echo $pass;?>" />
+<br>
+<?php// echo $errpass; ?>
+<br>
+
+<button  type="submit" name="submit" value="Submit">Submit</button>&nbsp &nbsp &nbsp
+<a href="signup.php">Sign up</a>
+
+</form>
+</body>
+</html>
+-->
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,7 +81,7 @@
 </head>
 
 <body>
-		
+
 		<div class="row">
   		<div class align="center">
 		<a href="index.html"><img id="logo" src="logo.png" alt="Worthy"></a></div>
@@ -52,8 +112,8 @@
     		<ul class="nav navbar-nav">
 				<li class="active"><a href="home.html">Home</a></li>
         		<li><a href="#">Contact Us</a></li>
-        		<li><a href="singin.html">Sign In</a></li>
-        		<li><a href="#">Sign Up</a></li>
+        		<li><a href="singin.html">Sing In</a></li>
+        		<li><a href="#">Sing Up</a></li>
         		<!--<li class="dropdown">
         			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
         			<ul class="dropdown-menu">
@@ -71,17 +131,17 @@
 	</div>
 </nav>
 
-   
-    
-    
-	    
+
+
+
+
     <div class="wrapper; ">
 		<!--<div class="header header-filter" style="background-image: url('../assets/img/city.jpg'); background-size:20px;  background-position:right; ">-->
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
 						<div class="card card-signup">
-							<form class="form" method="" action="">
+							<form class="form" action="<?php echo $_SERVER["PHP_SELF"];?>" method="POST">
 								<div class="header header-info text-center">
 									<h4>Sign In</h4>
 									<!--<div class="social-line">
@@ -103,7 +163,8 @@
 										<span class="input-group-addon">
 											<i class="material-icons">face</i>
 										</span>
-										<input type="text" class="form-control" placeholder="User Name...">
+										<input type="text" class="form-control" name="uname" placeholder="User Name..." value="<?php echo $username;?>" />
+										<span><?php echo $errusername; ?></span>
 									</div>
 
 									<!--<div class="input-group">
@@ -117,7 +178,9 @@
 										<span class="input-group-addon">
 											<i class="material-icons">lock_outline</i>
 										</span>
-										<input type="password" placeholder="Password..." class="form-control" />
+										<input type="password" class="form-control" name="pass" placeholder="Password..." value="<?php echo $pass;?>" />
+										<span><?php echo $errpass; ?></span>
+                    <span><?php echo $errlogin; ?></span>
 									</div>
 
 									<!-- If you want to add a checkbox to this form, uncomment this code
@@ -130,13 +193,13 @@
 									</div> -->
 								</div>
 								<div class="footer text-center">
-									<a href="#pablo" class="btn btn-simple btn-primary btn-lg">Get Started</a>
+									<button  type="submit" name="submit" value="Submit" class="btn btn-simple btn-primary btn-lg">Sign in</button>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
-			</div>		
+			</div>
 
 	</div>
 	<!-- you can use the class main-raised if you want the main area to be as a page with shadows -->
@@ -144,7 +207,7 @@
 		<div class="container">
 
 			<!-- here you can add your content -->
-			
+
 		</div>
 	</div>
 </div>
