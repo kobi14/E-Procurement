@@ -1,4 +1,7 @@
 <!doctype html>
+<?php include 'connection.php'; ?>
+
+
 <html lang="en">
 <head>
 
@@ -24,20 +27,43 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
 	<!-- CSS Files -->
-     
+
 	<!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
     <style>
+
     .table-style .today {background: #2A3F54; color: #ffffff;}
 .table-style th:nth-of-type(7),td:nth-of-type(7) {color: blue;}
 .table-style th:nth-of-type(1),td:nth-of-type(1) {color: red;}
-.table-style tr:first-child th{background-color:#F6F6F6; text-align:center; font-size: 15px;}</style>
+.table-style tr:first-child th{background-color:#F6F6F6; text-align:center; font-size: 15px;}
+
+#red{ 
+  border-width: 15px;
+  background: #4da6ff; 
+  position:absolute; 
+  height:100%;
+  width:100%; 
+  height:60px; 
+}
+
+.text {
+  color: #737373;
+  font-family: Lato;
+  font-size: 20px;
+  text-align: center;
+  margin-top: -10px;
+  float: center;
+}
+
+
+ 
+</style>
 </head>
 
 <body>
-		
+
 		<div class="row">
   		<div class align="center">
 		<a href="index.html"><img id="logo" src="logo.png" alt="Worthy"></a></div>
@@ -59,8 +85,8 @@
     	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          <i  class="brand-logo"><p id="demo"></p></i>
     		<ul class="nav navbar-nav right hide-on-med-and-down">
-				<li class="active"><a href="home.html">Home</a></li>
-        		<li><a href="home.html">Contact Us</a></li>
+				<li class="active"><a href="home.php">Home</a></li>
+        		<li><a href="home.php">Contact Us</a></li>
         		<li><a href="singin.html">Sign In</a></li>
         		<li><a href="#">Sign Up</a></li>
         		<!--<li class="dropdown">
@@ -87,32 +113,56 @@
      		<tr>
      		<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; ">Announcements</button></td>
      		</tr>
-          
-        <tr>			
+
+        <tr>
      		<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Location</button></td>
      		</tr>
-        <tr>  
+        <tr>
      		<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Organisation</button></td>
      		</tr>
-        <tr>  
+        <tr>
      		<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders Status</button></td>
      		</tr>
-        <tr>  
+        <tr>
      		<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Classification</button></td>
      		</tr>
      	</table>
-    
-    </div><!-- end side bar -->
 
-  
+      <!--live bids-->
+      <div class="container-fluid">
+        <div class="row">
+         
+            <div class=" #82b1ff blue accent-1" style="padding: 20px 10px; width: 200px; box-shadow: 5px 5px grey" align="center"><h4 style="font-family:Impact;">3500</h4></div>
+            <div class=" #ce93d8 purple lighten-3  " align="center" style="padding: 5px 10px; width: 200px; box-shadow: 5px 5px grey"><span style="font-family:Impact; color:white; font-size: 15pt" >Active members</span></div>
+            <div class=" #82b1ff blue accent-1  " style="padding: 20px 10px; width: 200px; box-shadow: 5px 5px grey " align="center"><h4 style="font-family:Impact;">3500</h4></div>
+            <div class=" #ce93d8 purple lighten-3  " align="center" style="padding: 5px 20px; width: 200px; box-shadow: 5px 5px grey"><span style="font-family:Impact; color:white; font-size: 15pt" >Tenders Opening Today</span></div>
+            <div class="  #82b1ff blue accent-1  " style="padding: 20px 20px; width: 200px; box-shadow: 5px 5px grey " align="center"><h4 style="font-family:Impact;">3500</h4></div>
+            <div class=" #ce93d8 purple lighten-3 " align="center" style="padding: 5px 20px; width: 200px; box-shadow: 5px 5px grey"><span style="font-family:Impact; color:white; font-size: 15pt" >Tenders closing Today</span></div>
+        
+        </div>
+      </div>
+
+
+     </div>  <!--end live bids-->
+
+
+
+   <!-- end side bar -->
+
+		<?php
+			$sql="SELECT * FROM tender";
+			$result = mysqli_query($conn, $sql);
+			
+		 ?>
+
     <div class="col-md-8"><!-- start the tables -->
      <div class="row"><!-- start 1st table row -->
- 
+
 
       <div class="container-fluid"><!-- start contend 1st table -->
-      <h3 class="#ce93d8 purple lighten-3">Latest Tenders</h3>
+      <h3 class="#ce93d8 purple lighten-3 col-md-3" style=" box-shadow: 5px 5px grey; font-family:Impact;  font-size: 20pt">Latest Tenders</h3>
       <table class="table table-hover">
-      <thead class="#ce93d8 purple lighten-3">
+      <thead class="#ce93d8 purple lighten-3" style=" box-shadow: 5px 5px grey" >
         <tr>
           <th>Tender Title</th>
           <th>Reference</th>
@@ -121,33 +171,28 @@
         </tr>
       </thead>
       <tbody>
+				<?php
+				while ($row = mysqli_fetch_assoc($result)) {
+
+				 ?>
         <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
-          <td>2015.01.01</td>
+          <td><?php echo $row["TenderTitle"] ?></td>
+          <td><?php echo $row["Category"] ?></td>
+          <td><?php echo $row["ExpireDate"] ?></td>
+          <td><?php echo $row["OpeningDate"] ?></td>
         </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@example.com</td>
-           <td>2015.01.01</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@example.com</td>
-           <td>2015.01.01</td>
-        </tr>
+				<?php
+				}
+				 ?>
       </tbody>
       </table>
       </div><!-- end contend 1st table -->
      </div><!-- end 1st table row -->
     <div class="row"><!-- start 2nd table row -->
       <div class="container-fluid"> <!-- start 2nd table contend -->
-      <h3 class="#ce93d8 purple lighten-3">Latest Corrigendums</h3>
+      <h3 class="#ce93d8 purple lighten-3 col-md-3" style=" box-shadow: 5px 5px grey; font-family:Impact;  font-size: 20pt ">Latest Corrigendums</h3>
       <table class="table table-hover">
-      <thead class="#ce93d8 purple lighten-3">
+      <thead class="#ce93d8 purple lighten-3" style=" box-shadow: 5px 5px grey">
         <tr>
           <th>Tender Title</th>
           <th>Reference</th>
@@ -178,13 +223,15 @@
       </tbody>
       </table>
 
-     
-    
-   
+
+
+
     </div><!--2nd table end contend -->
-      
+
     </div><!-- end 2nd table row -->
    </div><!-- end tables -->
+
+   
 
 
     <div class=" col-md-2 col-sm-12 well pull-right-lg" style="border:1px solid;height: 350px;"><!-- start calender -->
@@ -253,7 +300,7 @@
             <td></td>
             <td></td>
           </tr>
-          
+
           <!--?php
             foreach ($weeks as $week) {
               echo $week;
@@ -261,10 +308,51 @@
           ?-->
         </table>
 
+ 
     </div>
+    
+
+
+
   </div><!-- end calender -->
 
- 
+     <!--more icon-->
+     
+      <!--<div class="fixed-action-btn">
+        
+          <a class="btn-floating btn-large red">
+          <i class="large material-icons">more</i>
+          </a>
+          <ul>
+            <li><a href="#" class="btn-floating red btn-large"><i class="large material-icons">help</a></li>
+            <li><a href="#" class="btn-floating blue btn-large"><i class="large material-icons">search</i></a></li>
+            <li><a href="#" class="btn-floating orange btn-large"><i class="large material-icons">feedback</i></a></li>
+            <li><a href="#" class="btn-floating green btn-large"><i class="large material-icons">FAQ</i></a></li>
+          </ul>
+      
+      </div>  
+     -->
+ <div class="fixed-action-btn">
+        
+          <a class="btn-floating btn-large red">
+          <i class="large material-icons">more</i>
+          </a>
+          <ul>
+            <li><a href="#" class="btn-floating red btn-large"><i class="large material-icons">help</a></li>
+            <li><a href="#" class="btn-floating blue btn-large"><i class="large material-icons">search</i></a></li>
+            <li><a href="#" class="btn-floating orange btn-large"><i class="large material-icons">feedback</i></a></li>
+            <li><a href="#" class="btn-floating green btn-large"><i class="large material-icons">FAQ</i></a></li>
+          </ul>
+      
+      </div>    
+     
+
+
+
+   
+
+
+
 
  </div><!-- end row -->
 </div><!-- end of container -->
@@ -280,38 +368,28 @@
 
       		</ul>
       	</div>-->
-      
-      	
 
-       
 
-      
-    
-   
-   	<div class="fixed-action-btn">
-   			<a class="btn-floating btn-large red">
-        <i class="large material-icons">more</i>
-        </a>
-        <ul>
-          <li><a href="#" class="btn-floating red btn-large"><i class="large material-icons">help</a></li>
-          <li><a href="#" class="btn-floating blue btn-large"><i class="large material-icons">search</i></a></li>
-          <li><a href="#" class="btn-floating orange btn-large"><i class="large material-icons">feedback</i></a></li>
-          <li><a href="#" class="btn-floating green btn-large"><i class="large material-icons">FAQ</i></a></li>
-          
-          </ul>
-   	</div>
-	
-	
+
+
+
+
+
+
+
 
 			<!-- here you can add your content -->
-			
+
 		</div>
 	</div>
 </div>
-
-
-
-</body>
+    <!--footer-->
+<footer id="red">
+  <h2 class="text">-All rights reserved.-</h2>
+         
+</footer>
+   
+  </body>
   <script>
   var d = new Date();
   document.getElementById("demo").innerHTML = d.toUTCString();
@@ -319,7 +397,7 @@
 	<!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
  <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-  
+
 
 	<!--   Core JS Files   -->
 	<script src="assets/js/jquery.min.js" type="text/javascript"></script>
@@ -338,7 +416,6 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" ></script>
     <!-- nessesary for bootstrap java script plugin -->
-
 
 
 </html>
