@@ -1,3 +1,25 @@
+<?php
+include "../opfun.php";
+
+session_start();
+
+if(!isset($_SESSION['username']))
+
+{
+
+    header('location:../../Bidder_Module/login.php');
+}elseif(isset($_SESSION['username'])){
+
+    echo "<script type='text/javascript'>
+           
+            alert('Hi,Successfully Login');
+
+
+    </script>";
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,8 +59,10 @@
 		    -->
 
 			<div class="logo">
-				<a href="#" class="simple-text">
+				<a href="dashboard.php" class="simple-text">
 					Operator
+                    <br>
+                    <?php echo "WelCome : ".$_SESSION['username'] ; ?>
 				</a>
 			</div>
 								<div class="sidebar-wrapper">
@@ -86,7 +110,7 @@
 	                    </a>
 	                </li>-->
 					<li class="active-pro">
-	                    <a href="upgrade.html">
+	                    <a href="../../Bidder_Module/logout.php">
 	                        <i class="material-icons">unarchive</i>
 	                        <p>SingOut</p>
 	                    </a>

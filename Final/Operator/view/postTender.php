@@ -1,14 +1,18 @@
 <?php
-//include_once ('../function/Operator.php');
-//
-//$ptender=new Operator();
-//if(isset($_POST["submit"])){
-//    $ptender->insert();
-//}
+include "../opfun.php";
 
+session_start();
+
+if(!isset($_SESSION['username']))
+
+{
+
+    header('location:../../Bidder_Module/login.php');
+}elseif(isset($_SESSION['username'])) {
+
+}
 
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -52,6 +56,8 @@
 			<div class="logo">
 				<a href="#" class="simple-text">
 					Operator
+                    <br>
+                    <?php echo "WelCome : ".$_SESSION['username'] ; ?>
 				</a>
 			</div>
 
@@ -83,7 +89,7 @@
 	                </li>
 
 					<li class="active-pro">
-	                    <a href="upgrade.html">
+                        <a href="../../Bidder_Module/logout.php">
 	                        <i class="material-icons">unarchive</i>
 	                        <p>SingOut</p>
 	                    </a>

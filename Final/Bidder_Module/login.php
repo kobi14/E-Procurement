@@ -2,9 +2,9 @@
 <?php
 include "connect.php";
 include "functions.php";
-include "../Operator/opfun.php"
+
 $username=$pass=$user="";
-$errusername=$errpass=$errlogin="";
+$errusername=$errpass=$errlogin=$errtype="";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -34,7 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errlogin=user_login($username,$pass);
     }elseif ($errusername=="" and $errpass=="" and $role=="1") {
 
-    	$errlogin=user_login($username,$pass);
+        include_once "../Operator/opfun.php";
+
+    	$errlogin=user_loginopr($username,$pass);
     }
 }
 
@@ -163,10 +165,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									<span>
 						                  <a href="recovery.php">Click here,<label> forgot password?</label></div></a>
 						             </span>
+                            </form>
 
 								</div>
 
-							</form>
+
 						</div>
 					</div>
 				</div>
