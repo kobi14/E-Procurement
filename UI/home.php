@@ -1,5 +1,101 @@
 <!doctype html>
 <?php include 'connection.php'; ?>
+     <!-- calender java script file -->
+      <script> 
+function displayCalendar(){
+ 
+ 
+ var htmlContent ="";
+ var FebNumberOfDays ="";
+ var counter = 1;
+ 
+ 
+ var dateNow = new Date();
+ var month = dateNow.getMonth();
+
+ var nextMonth = month+1; //+1; //Used to match up the current month with the correct start date.
+ var prevMonth = month -1;
+ var day = dateNow.getDate();
+ var year = dateNow.getFullYear();
+ 
+ 
+ //Determing if February (28,or 29)  
+ if (month == 1){
+    if ( (year%100!=0) && (year%4==0) || (year%400==0)){
+      FebNumberOfDays = 29;
+    }else{
+      FebNumberOfDays = 28;
+    }
+ }
+ 
+ 
+ // names of months and week days.
+ var monthNames = ["January","February","March","April","May","June","July","August","September","October","November", "December"];
+ var dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday", "Saturday"];
+ var dayPerMonth = ["31", ""+FebNumberOfDays+"","31","30","31","30","31","31","30","31","30","31"]
+ 
+ 
+ // days in previous month and next one , and day of week.
+ var nextDate = new Date(nextMonth +' 1 ,'+year);
+ var weekdays= nextDate.getDay();
+ var weekdays2 = weekdays
+ var numOfDays = dayPerMonth[month];
+     
+ 
+ 
+ 
+ // this leave a white space for days of pervious month.
+ while (weekdays>0){
+    htmlContent += "<td class='monthPre'></td>";
+ 
+ // used in next loop.
+     weekdays--;
+ }
+ 
+ // loop to build the calander body.
+ while (counter <= numOfDays){
+ 
+     // When to start new line.
+    if (weekdays2 > 6){
+        weekdays2 = 0;
+        htmlContent += "</tr><tr>";
+    }
+ 
+ 
+ 
+    // if counter is current day.
+    // highlight current day using the CSS defined in header.
+    if (counter == day){
+        htmlContent +="<td class='dayNow'  onMouseOver='this.style.background=\"#FF0000\"; this.style.color=\"#FFFFFF\"' "+
+        "onMouseOut='this.style.background=\"\"; this.style.color=\"\"'>"+counter+"</td>";
+    }else{
+        htmlContent +="<td class='monthNow' onMouseOver='this.style.background=\"#FF0000\"'"+
+        " onMouseOut='this.style.background=\"\"'>"+counter+"</td>";    
+ 
+    }
+    
+    weekdays2++;
+    counter++;
+ }
+ 
+ 
+ 
+ // building the calendar html body.
+ var calendarBody = "<table class='calendar'> <tr class='monthNow'><th colspan='7'>"
+ +monthNames[month]+" "+ year +"</th></tr>";
+ calendarBody +="<tr class='dayNames'>  <td>Sun</td>  <td>Mon</td> <td>Tues</td>"+
+ "<td>Wed</td> <td>Thurs</td> <td>Fri</td> <td>Sat</td> </tr>";
+ calendarBody += "<tr>";
+ calendarBody += htmlContent;
+ calendarBody += "</tr></table>";
+ // set the content of div .
+ document.getElementById("calendar").innerHTML=calendarBody;
+ 
+}
+</script> 
+
+
+
 
 
 <html lang="en">
@@ -32,37 +128,10 @@
     <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
-    <style>
-
-    .table-style .today {background: #2A3F54; color: #ffffff;}
-.table-style th:nth-of-type(7),td:nth-of-type(7) {color: blue;}
-.table-style th:nth-of-type(1),td:nth-of-type(1) {color: red;}
-.table-style tr:first-child th{background-color:#F6F6F6; text-align:center; font-size: 15px;}
-
-#red{ 
-  border-width: 15px;
-  background: #4da6ff; 
-  position:absolute; 
-  height:100%;
-  width:100%; 
-  height:60px; 
-}
-
-.text {
-  color: #737373;
-  font-family: Lato;
-  font-size: 20px;
-  text-align: center;
-  margin-top: -10px;
-  float: center;
-}
-
-
- 
-</style>
+    <link rel="stylesheet" type="text/css"  href="home_css/home.css">
 </head>
 
-<body>
+<body onload="displayCalendar()">
 
 		<div class="row">
   		<div class align="center">
@@ -89,6 +158,7 @@
         		<li><a href="home.php">Contact Us</a></li>
         		<li><a href="singin.html">Sign In</a></li>
         		<li><a href="#">Sign Up</a></li>
+          </ul>
         		<!--<li class="dropdown">
         			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
         			<ul class="dropdown-menu">
@@ -127,32 +197,48 @@
      		<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Classification</button></td>
      		</tr>
      	</table>
+<?php
+			//Active members count
+      $sql1="SELECT COUNT(*) AS num FROM bidder";//get the bidder count
+      $data = mysqli_query($conn, $sql1);//excute the query
+      $row=mysqli_fetch_assoc($data);//
+      $activeMembers=$row['num'];
 
+			//opening today tender count
+			$sql2="SELECT COUNT(*) AS num FROM tender WHERE OpeningDate=CURDATE()";//curdate() eken system date eka enawa.
+			$data2 = mysqli_query($conn, $sql2);//excute the query
+			$row2=mysqli_fetch_assoc($data2);//
+			$openToday=$row2['num'];
+
+			//closiing today tender count
+			$sql3="SELECT COUNT(*) AS num FROM tender WHERE ExpireDate=CURDATE()";//curdate() eken system date eka enawa.
+			$data3 = mysqli_query($conn, $sql3);//excute the query
+			$row3=mysqli_fetch_assoc($data3);//
+			$closeToday=$row3['num'];
+
+     ?>
       <!--live bids-->
       <div class="container-fluid">
         <div class="row">
-         
-            <div class=" #82b1ff blue accent-1" style="padding: 20px 10px; width: 200px; box-shadow: 5px 5px grey" align="center"><h4 style="font-family:Impact;">3500</h4></div>
+
+            <div class=" #82b1ff blue accent-1" style="padding: 20px 10px; width: 200px; box-shadow: 5px 5px grey" align="center"><h4 style="font-family:Impact;"><?php echo $activeMembers;?></h4></div>
             <div class=" #ce93d8 purple lighten-3  " align="center" style="padding: 5px 10px; width: 200px; box-shadow: 5px 5px grey"><span style="font-family:Impact; color:white; font-size: 15pt" >Active members</span></div>
-            <div class=" #82b1ff blue accent-1  " style="padding: 20px 10px; width: 200px; box-shadow: 5px 5px grey " align="center"><h4 style="font-family:Impact;">3500</h4></div>
+            <div class=" #82b1ff blue accent-1  " style="padding: 20px 10px; width: 200px; box-shadow: 5px 5px grey " align="center"><h4 style="font-family:Impact;"><?php echo $openToday;?></h4></div>
             <div class=" #ce93d8 purple lighten-3  " align="center" style="padding: 5px 20px; width: 200px; box-shadow: 5px 5px grey"><span style="font-family:Impact; color:white; font-size: 15pt" >Tenders Opening Today</span></div>
-            <div class="  #82b1ff blue accent-1  " style="padding: 20px 20px; width: 200px; box-shadow: 5px 5px grey " align="center"><h4 style="font-family:Impact;">3500</h4></div>
+            <div class="  #82b1ff blue accent-1  " style="padding: 20px 20px; width: 200px; box-shadow: 5px 5px grey " align="center"><h4 style="font-family:Impact;"><?php echo $closeToday;?></h4></div>
             <div class=" #ce93d8 purple lighten-3 " align="center" style="padding: 5px 20px; width: 200px; box-shadow: 5px 5px grey"><span style="font-family:Impact; color:white; font-size: 15pt" >Tenders closing Today</span></div>
-        
+
         </div>
       </div>
 
 
      </div>  <!--end live bids-->
-
-
-
-   <!-- end side bar -->
+<!-- end side bar -->
 
 		<?php
 			$sql="SELECT * FROM tender";
 			$result = mysqli_query($conn, $sql);
-			
+
 		 ?>
 
     <div class="col-md-8"><!-- start the tables -->
@@ -160,7 +246,7 @@
 
 
       <div class="container-fluid"><!-- start contend 1st table -->
-      <h3 class="#ce93d8 purple lighten-3 col-md-3" style=" box-shadow: 5px 5px grey; font-family:Impact;  font-size: 20pt">Latest Tenders</h3>
+      <h3 class="#ce93d8 purple lighten-3 col-md-4" style=" box-shadow: 5px 5px grey; font-family:Impact;  font-size: 20pt">Latest Tenders</h3>
       <table class="table table-hover">
       <thead class="#ce93d8 purple lighten-3" style=" box-shadow: 5px 5px grey" >
         <tr>
@@ -190,7 +276,7 @@
      </div><!-- end 1st table row -->
     <div class="row"><!-- start 2nd table row -->
       <div class="container-fluid"> <!-- start 2nd table contend -->
-      <h3 class="#ce93d8 purple lighten-3 col-md-3" style=" box-shadow: 5px 5px grey; font-family:Impact;  font-size: 20pt ">Latest Corrigendums</h3>
+      <h3 class="#ce93d8 purple lighten-3 col-md-4" style=" box-shadow: 5px 5px grey; font-family:Impact;  font-size: 20pt ">Latest Corrigendums</h3>
       <table class="table table-hover">
       <thead class="#ce93d8 purple lighten-3" style=" box-shadow: 5px 5px grey">
         <tr>
@@ -229,96 +315,31 @@
     </div><!--2nd table end contend -->
 
     </div><!-- end 2nd table row -->
-   </div><!-- end tables -->
+     </div><!-- end tables -->
 
-   
-
-
-    <div class=" col-md-2 col-sm-12 well pull-right-lg" style="border:1px solid;height: 350px;"><!-- start calender -->
-    <p class="well" style="padding:0px; margin-bottom:0px;">
-      <span class="glyphicon glyphicon-calendar"></span>  Calendar
-    </p>
-    <div class="col-md-12" style="padding:0px;">
-      <br>
-        <table style="margin-left: -12px;" class="table table-bordered table-style table-responsive">
-          <tr>
-            <th colspan="2"><a href="?ym=<?php echo $prev; ?>"><span class="glyphicon glyphicon-chevron-left"></span></a></th>
-            <th colspan="2"> 2017</th>
-            <th colspan="2"><a href="?ym=<?php echo $next; ?>"><span class="glyphicon glyphicon-chevron-right"></span></a></th>
-          </tr>
-          <tr>
-            <th>S</th>
-            <th>M</th>
-            <th>T</th>
-            <th>W</th>
-            <th>T</th>
-            <th>F</th>
-            <th>S</th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td class="today">12</td>
-            <td>13</td>
-            <td>14</td>
-          </tr>
-          <tr>
-            <td>15</td>
-            <td>16</td>
-            <td>17</td>
-            <td>18</td>
-            <td>19</td>
-            <td>20</td>
-            <td>21</td>
-          </tr>
-           <tr>
-            <td>22</td>
-            <td>23</td>
-            <td>24</td>
-            <td>25</td>
-            <td>26</td>
-            <td>27</td>
-            <td>28</td>
-          </tr>
-            <tr>
-            <td>29</td>
-            <td>30</td>
-            <td>31</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-
-          <!--?php
-            foreach ($weeks as $week) {
-              echo $week;
-            };
-          ?-->
-        </table>
-
- 
-    </div>
-    
-
-
-
-  </div><!-- end calender -->
+    <!-- start calender -->
+<div class="col-md-2">
+        
+       <div id="calendar"></div> 
+</div><!-- end calender -->
 
      <!--more icon-->
-     
+
       <!--<div class="fixed-action-btn">
+
+          <a class="btn-floating btn-large red">
+          <i class="large material-icons">more</i>
+          </a>
+          <ul>
+            <li><a href="#" class="btn-floating red btn-large"><i class="large material-icons">help</a></li>
+            <li><a href="#" class="btn-floating blue btn-large"><i class="large material-icons">search</i></a></li>
+            <li><a href="#" class="btn-floating orange btn-large"><i class="large material-icons">feedback</i></a></li>
+            <li><a href="#" class="btn-floating green btn-large"><i class="large material-icons">FAQ</i></a></li>
+          </ul>
+
+      </div>
+     -->
+      <div class="fixed-action-btn">
         
           <a class="btn-floating btn-large red">
           <i class="large material-icons">more</i>
@@ -331,25 +352,11 @@
           </ul>
       
       </div>  
-     -->
- <div class="fixed-action-btn">
-        
-          <a class="btn-floating btn-large red">
-          <i class="large material-icons">more</i>
-          </a>
-          <ul>
-            <li><a href="#" class="btn-floating red btn-large"><i class="large material-icons">help</a></li>
-            <li><a href="#" class="btn-floating blue btn-large"><i class="large material-icons">search</i></a></li>
-            <li><a href="#" class="btn-floating orange btn-large"><i class="large material-icons">feedback</i></a></li>
-            <li><a href="#" class="btn-floating green btn-large"><i class="large material-icons">FAQ</i></a></li>
-          </ul>
-      
-      </div>    
-     
 
 
 
-   
+
+
 
 
 
@@ -386,9 +393,10 @@
     <!--footer-->
 <footer id="red">
   <h2 class="text">-All rights reserved.-</h2>
-         
+ 
+      </div>
 </footer>
-   
+
   </body>
   <script>
   var d = new Date();

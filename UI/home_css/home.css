@@ -1,0 +1,53 @@
+
+    .table-style .today {background: #2A3F54; color: #ffffff;}
+.table-style th:nth-of-type(7),td:nth-of-type(7) {color: blue;}
+.table-style th:nth-of-type(1),td:nth-of-type(1) {color: red;}
+.table-style tr:first-child th{background-color:#F6F6F6; text-align:center; font-size: 15px;}
+
+#red{ 
+  border-width: 15px;
+  background: #4da6ff; 
+  position:absolute; 
+  height:100%;
+  width:100%; 
+  height:60px; 
+}
+
+.text {
+  color: #737373;
+  font-family: Lato;
+  font-size: 20px;
+  text-align: center;
+  margin-top: -10px;
+  float: center;
+
+}
+.monthPre{
+ color: gray;
+ text-align: center;
+}
+.monthNow{
+ color: black;
+ text-align: center;
+}
+.dayNow{
+ border: 2px solid black;
+ color: #FF0000;
+ text-align: center;
+}
+.calendar td{
+ htmlContent: 2px;
+ width: 40px;
+}
+.monthNow th{
+ background-color: #9900cc;
+ color: #FFFFFF;
+ text-align: center;
+}
+.dayNames{
+ background: darkblue;
+ color: #FFFFFF;
+ text-align: center;
+}
+
+ 
