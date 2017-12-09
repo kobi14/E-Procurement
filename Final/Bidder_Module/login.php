@@ -2,6 +2,7 @@
 <?php
 include "connect.php";
 include "functions.php";
+include "../Operator/opfun.php"
 $username=$pass=$user="";
 $errusername=$errpass=$errlogin="";
 
@@ -20,14 +21,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pass = mysqli_real_escape_string($conn,$_POST["pass"]);
         $errpass = validate_text_and_numbers($pass);
     }
-    if(($_POST["ttype"])==0){
+    if(($_POST["ttype"])=="0"){
     	$errtype="select ur role";
 
-    }else{
-    	if(($_POST["ttype"])==1)
     }
-    if($errusername=="" and $errpass==""){
+
+    $role=$_POST["ttype"];
+
+   
+    if($errusername=="" and $errpass=="" and $role=="4"){
+
         $errlogin=user_login($username,$pass);
+    }elseif ($errusername=="" and $errpass=="" and $role=="1") {
+
+    	$errlogin=user_login($username,$pass);
     }
 }
 
