@@ -107,11 +107,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 								</div>
 								<!--<p class="text-divider">Or Be Classical</p>-->
 								<div class="content">
-
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">account_box</i>
+										</span>
+									<div class="form-group label-floating">
+													<label>Login as a</label>
+                                                    <select class="form-control" id="type" name="ttype">
+                                                        <option value="0">Select</option>
+                                                        <option value="operator">Operator</option>
+                                                        <option value="tec">TEC</option>
+                                                        <option value="pc">PC</option>
+                                                        <option value="bidder">Bidder</option>
+                                                    </select>
+												</div>
+									</div>
 									<div class="input-group">
 										<span class="input-group-addon">
 											<i class="material-icons">face</i>
 										</span>
+										
 										<input type="text" class="form-control" name="uname" placeholder="User Name..." value="<?php echo $username;?>" />
 										<span><?php echo $errusername; ?></span>
 									</div>
@@ -129,10 +144,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 								</div>
 								<div class="footer text-center">
-									<button  type="submit" name="submit" value="Submit" class="btn btn-simple btn-primary btn-lg">Signin</button>
-                  <a href="recovery.php">forgot password?</a>
+									<button  type="submit" name="submit" value="Submit" class="btn  btn-info btn-s">Signin</button>
+									<br>
+									<span>
+						                  <a href="recovery.php">Click here,<label> forgot password?</label></div></a>
+						             </span>
 
 								</div>
+
 							</form>
 						</div>
 					</div>
