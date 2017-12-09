@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["pass"])) {
         $errpass = "Password is required";
     } else {
-        $pass = mysqli_real_escape_string($conn,$_POST["pass"]);
+        $pass = mysqli_real_escape_string($conn,md5($_POST["pass"]));
         $errpass = validate_text_and_numbers($pass);
     }
     if(($_POST["ttype"])=="0"){
