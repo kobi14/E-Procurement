@@ -25,7 +25,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 </head>
 
-<body id="body">
+<body>
 
 	<div class="wrapper">
 
@@ -59,7 +59,7 @@
 	                <li>
 	                    <a href="searchdup.php">
 	                        <i class="material-icons">content_paste</i>
-	                        <p>Search Tender</p>
+	                        <p>Search Tenders</p>
 	                    </a>
 	                </li>
 	                <li>
@@ -73,12 +73,6 @@
 	                    <a href="notifications.php">
 	                        <i class="material-icons text-gray">notifications</i>
 	                        <p>Notifications</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="followers.php">
-	                        <i class="material-icons text-gray">assistant_photo</i>
-	                        <p>Followers</p>
 	                    </a>
 	                </li>
 					<li class="active-pro">
@@ -146,77 +140,50 @@
 				</div>
 			</nav>
 
-			<div class="content">
-					<div class="container-fluid">
-							<div class="row">
-									<div class="col-md-12">
-											<div class="card">
-													<div class="card-header" data-background-color="purple">
-															<h4 class="title">Tender Table</h4>
-															<p class="category">Tender Details</p>
-													</div>
+	        <div class="content">
+	            <div class="container-fluid">
+	                <div class="card">
+	                    <div class="card-header" data-background-color="purple">
+	                        <h4 class="title">Notifications</h4>
+	                       <!-- <p class="category">Handcrafted by our friend <a target="_blank" href="https://github.com/mouse0270">Robert McIntosh</a>. Please checkout the <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">full documentation.</a></p>-->
+	                    </div>
+	                    <div class="card-content">
+	                       <div class="row">
+	                            <div class="col-md-6">
+	                                <h5>Bidder's Notifications</h5>
+																	<label class="switch">
 
-            <!--    -->
-            </div>
-						<div class="card-content table-responsive">
-							<form>
-	                     <label><b>OrderBy&nbsp;&nbsp;&nbsp;  </b></label><select onChange="getData();" id="selectForm" name="sort">
-	                      <option  value="TenderID">Tender ID</option>
-	                      <option  value="eDate">Closing Date</option>
-	                    </select>
-	                </form>
-								<table class="table">
-										<thead class="text-primary">
-
-                        <th style="font-size: 15px"><b>Tender ID</b></th>
-                        <th style="font-size: 15px"><b>Tender</b></th>
-												<th style="font-size: 15px"><b>Owner</b></th>
-                        <th style="font-size: 15px"><b>Open Date</b></th>
-												<th style="font-size: 15px"><b>Open Time</b></th>
-												<th style="font-size: 15px"><b>Expiry Date</b></th>
-                        <th style="font-size: 15px"><b>Expiry Time</b></th>
-												<th style="font-size: 15px"><b>Category</b></th>
-
-												<tbody id="data">
+	                            </div>
 
 
-											</tbody>
-									</table>
-							</div>
-					</div>
-			</div>
-	</div>
-	</div>
-	</div>
+	                        </div>
+
+	                        <br>
+	                        <br>
 
 
-
-                             <!--  -->
-<!--
-
--->
-
-
-	                                       <!-- -->
-
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
 
 					<footer class="footer">
-	            <div class="container-fluid">
-	                <nav class="pull-left">
-	                    <ul>
-	                        <li>
-	                            <a href="#">
-	                                Home
-	                            </a>
-	                        </li>
-	                       <!-- -->
-	                    </ul>
-	                </nav>
-	                <p class="copyright pull-right">
-	                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">E-Procurement</a>
-	                </p>
-	            </div>
-	        </footer>
+		 				 <div class="container-fluid">
+		 						 <nav class="pull-left">
+		 								 <ul>
+		 										 <li>
+		 												 <a href="#">
+		 														 Home
+		 												 </a>
+		 										 </li>
+		 										<!-- -->
+		 								 </ul>
+		 						 </nav>
+		 						 <p class="copyright pull-right">
+		 								 &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">E-Procurement</a>
+		 						 </p>
+		 				 </div>
+		 		 </footer>
 	    </div>
 	</div>
 
@@ -230,13 +197,11 @@
 	<!--  Charts Plugin -->
 	<script src="../assets/js/chartist.min.js"></script>
 
-	<script src="../assets/js/dropdown.js"></script>
-
 	<!--  Notifications Plugin    -->
 	<script src="../assets/js/bootstrap-notify.js"></script>
 
 	<!--  Google Maps Plugin    -->
-	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script> -->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
 	<!-- Material Dashboard javascript methods -->
 	<script src="../assets/js/material-dashboard.js"></script>
@@ -244,34 +209,4 @@
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 	<script src="../assets/js/demo.js"></script>
 
-	<script>
-		document.getElementById("body").onload = function() {myFunction()};
-
-		function myFunction(){
-			console.log("Test");
-			$("#selectForm").val('eDate');
-
-			$.ajax({
-		                url     : 'process.php',
-		                method  : 'POST',
-		                async: false,
-		                data:{ sortBy: $('#selectForm').val() },
-
-		                success   : function(res)
-		                {
-
-		                   $('#data').html(res);
-
-		                },
-		                error : function(e)
-		                {
-		                    alert('error');
-		                }
-		            });
-		          }
-
-
-
-	</script>
-</script>
 </html>

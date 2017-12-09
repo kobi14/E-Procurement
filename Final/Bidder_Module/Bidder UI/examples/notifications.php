@@ -75,6 +75,12 @@
 	                        <p>Notifications</p>
 	                    </a>
 	                </li>
+	                <li>
+	                    <a href="followers.php">
+	                        <i class="material-icons text-gray">assistant_photo</i>
+	                        <p>Followers</p>
+	                    </a>
+	                </li>
 					<li class="active-pro">
 	                      <a href="http://localhost/e-procurement/UI/logout.php">
 	                        <i class="material-icons">unarchive</i>

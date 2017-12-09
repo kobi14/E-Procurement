@@ -20,6 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pass = mysqli_real_escape_string($conn,$_POST["pass"]);
         $errpass = validate_text_and_numbers($pass);
     }
+    if(($_POST["ttype"])==0){
+    	$errtype="select ur role";
+
+    }else{
+    	if(($_POST["ttype"])==1)
+    }
     if($errusername=="" and $errpass==""){
         $errlogin=user_login($username,$pass);
     }
@@ -115,11 +121,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 													<label>Login as a</label>
                                                     <select class="form-control" id="type" name="ttype">
                                                         <option value="0">Select</option>
-                                                        <option value="operator">Operator</option>
-                                                        <option value="tec">TEC</option>
-                                                        <option value="pc">PC</option>
-                                                        <option value="bidder">Bidder</option>
+                                                        <option value="1">Operator</option>
+                                                        <option value="2">TEC</option>
+                                                        <option value="3">PC</option>
+                                                        <option value="4">Bidder</option>
                                                     </select>
+                                                    <span><?php echo $errtype; ?></span>
 												</div>
 									</div>
 									<div class="input-group">
