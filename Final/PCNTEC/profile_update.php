@@ -19,6 +19,7 @@ if(mysqli_query($conn, $sql)){
     $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($result);
     $_SESSION['tec_data']=$row;
+    
 
 } else {
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);

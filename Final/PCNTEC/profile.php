@@ -4,7 +4,7 @@ if (isset($_SESSION['tec_data'])) {
 	$tec=$_SESSION['tec_data'];
 
 }else {
-	header("location:login.php");
+    header("location:../Bidder_Module/login.php");
 
 }
 ?>

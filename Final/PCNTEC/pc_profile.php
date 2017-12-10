@@ -4,7 +4,7 @@ if (isset($_SESSION['pc_data'])) {
 	$pc=$_SESSION['pc_data'];
 
 }else {
-	header("location:login.php");
+    header("location:../Bidder_Module/login.php");
 
 }
 ?>
