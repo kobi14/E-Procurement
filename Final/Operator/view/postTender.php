@@ -137,11 +137,11 @@ if(!isset($_SESSION['username']))
 
 										<div class="row">
 											<div class="col-md-6">
-<!--												<div class="form-group label-floating">-->
-<!--													<label class="control-label"></label>-->
-<!--                                                    <label>Tender Opening Date </label>-->
-<!--                                                    <input type="date" class="form-control" name="topendd">-->
-<!--												</div>-->
+												<div class="form-group label-floating">
+													<label class="control-label"></label>
+                                                    <label>Tender Title </label>
+                                                    <input type="text" class="form-control" name="title">
+												</div>
 <!---->
 <!--                                                <div class="form-group label-floating">-->
 <!--                                                    <label class="control-label"></label>-->

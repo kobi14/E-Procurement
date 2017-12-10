@@ -30,12 +30,14 @@ if($link == false){
 $tid=$_POST['tenderId'];
 $bd=$_POST['biddate'];
 $bt=$_POST['bidtime'];
+$title=$_POST['title'];
+
 //$tot=$_POST['topendt'];
 //$tod=$_POST['topendd'];
 $org=$_POST['org'];
 $ttype=$_POST['ttype'];
 
-$file = "../bidderinfo/";
+$file = "../tenderinfo/";
 $file = $file . basename( $_FILES['file1']['name']);
 move_uploaded_file($_FILES['file1']['tmp_name'], $file);
 
@@ -54,7 +56,7 @@ $time=date("h:i:sa");
 
 
 // attempt insert query execution
-$sql = "INSERT INTO tender (TenderId,TenderFile,TOwner,ODate,OTime,CDate,CTime,Category) VALUES ('$tid','$file','$org','$date','$time','$bd','$bt','$ttype')";
+$sql = "INSERT INTO tender (TenderId,TenderTitle,TenderFile,TOwner,ODate,OTime,CDate,CTime,Category) VALUES ('$tid','$title','$file','$org','$date','$time','$bd','$bt','$ttype')";
 //$sql="INSERT INTO demo (name,age) VALUES ('hi',23)";
 //$link->query($sql);
 

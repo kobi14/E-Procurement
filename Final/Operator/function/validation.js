@@ -40,11 +40,11 @@ function validate() {
         document.pTender.bidtime.focus();
         return false;
      }
-    // if(document.pTender.topendt.value==""){
-    //     alert("Tender Opening Date & Time must be filled out");
-    //     documet.pTender.topendd.focus();
-    //     return false;
-    // }
+    if(document.pTender.title.value==""){
+        alert("Tender Opening Date & Time must be filled out");
+        documet.pTender.topendd.focus();
+        return false;
+    }
     // if(document.pTender.topendt.value==""){
     //     alert("Tender Opening Date & Time must be filled out");
     //     documet.pTender.topendt.focus();
