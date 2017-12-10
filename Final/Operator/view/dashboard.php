@@ -113,7 +113,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 					<li class="active-pro">
 	                    <a href="../../Bidder_Module/logout.php">
 	                        <i class="material-icons">unarchive</i>
-	                        <p>SingOut</p>
+	                        <p>LogOut</p>
 	                    </a>
 	                </li>
 	            </ul>

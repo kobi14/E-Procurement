@@ -156,7 +156,7 @@ if (isset($_SESSION['tec_data'])) {
 																						 <ul class="list-group">
 																							  <li class="list-group-item">Tender ID: <?php echo $row["TenderID"];  ?> </li>
 																							  <li class="list-group-item">Bid Date: <?php echo $row["sDate"];  ?> </li>
-																								<li class="list-group-item">Bid PDF:<a href="<?php echo $row["BidFile"];?>"> Download </a> </li>
+																								<li class="list-group-item">Bid PDF:<a href="../Bidder_Module/Bidder UI/kobi/<?php echo $row["BidFile"];?>"> Download </a> </li>
 
 																							</ul>
 																							<form id="form1" enctype="multipart/form-data" action="evals_upload.php" method="post" >

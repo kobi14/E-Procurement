@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<htmllang="en">
 <head>
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
@@ -169,13 +169,14 @@
 										<thead class="text-primary">
 
                         <th style="font-size: 15px"><b>Tender ID</b></th>
-                        <th style="font-size: 15px"><b>Tender</b></th>
-												<th style="font-size: 15px"><b>Owner</b></th>
+                        <th style="font-size: 15px"><b>Tender Title</b></th>
+                        <th style="font-size: 15px"><b>Tender File</b></th>
+                        <th style="font-size: 15px"><b>Owner</b></th>
                         <th style="font-size: 15px"><b>Open Date</b></th>
-												<th style="font-size: 15px"><b>Open Time</b></th>
-												<th style="font-size: 15px"><b>Expiry Date</b></th>
+                        <th style="font-size: 15px"><b>Open Time</b></th>
+                        <th style="font-size: 15px"><b>Expiry Date</b></th>
                         <th style="font-size: 15px"><b>Expiry Time</b></th>
-												<th style="font-size: 15px"><b>Category</b></th>
+                        <th style="font-size: 15px"><b>Category</b></th>
 
 												<tbody id="data">
 

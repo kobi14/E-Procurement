@@ -37,7 +37,7 @@ $title=$_POST['title'];
 $org=$_POST['org'];
 $ttype=$_POST['ttype'];
 
-$file = "../tenderinfo/";
+$file = "../../../tenderinfo/";
 $file = $file . basename( $_FILES['file1']['name']);
 move_uploaded_file($_FILES['file1']['tmp_name'], $file);
 

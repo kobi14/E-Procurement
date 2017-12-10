@@ -37,8 +37,11 @@ $userID=$_SESSION['username'];
 
                   echo "<tr bgcolor=$col>";
                   echo "<td>" . $row['TenderID'] . "</td>";
+                  echo "<td>" . $row['TenderTitle'] . "</td>";
+                  echo "<td>" .'<a href="'.$row["TenderFile"].'" target="_blank" class="btn btn-success btn-xs">View PDF</a>'."</td>";
+
                  // echo "<td>" .$date_now . "</td>";
-                  echo "<td> </td>";
+                  //echo "<td> </td>";
                   echo "<td>" . $row['TOwner'] . "</td>";
                   echo "<td>" . $row['ODate'] . "</td>";
                   echo "<td>" . $row['OTime'] . "</td>";
