@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif($_POST["password1"]!=$_POST["password2"]){
         $errpass2="Passwords Do not match";
     }else {
-        $password2 = mysqli_real_escape_string($conn,$_POST["password2"]);
+        $password2 = mysqli_real_escape_string($conn,md5($_POST["password2"]));
         $errpass2 = validate_text_and_numbers($password2);
     }
       $nam="";
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if(empty($nam)){
         $errfilename= "File needed to be uploaded";
       }else {
-        $userfile="bidderinfo/".basename($_FILES["userfile"]["name"]);
+        $userfile="../Operator/bidderinfo/".basename($_FILES["userfile"]["name"]);
         move_uploaded_file($_FILES["userfile"]["tmp_name"],  $userfile);
       }
 

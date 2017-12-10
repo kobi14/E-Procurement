@@ -3,9 +3,10 @@ include "../opfun.php";
 
 session_start();
 
-if(!isset($_SESSION['username']))
+if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 
 {
+
 
     header('location:../../Bidder_Module/login.php');
 }elseif(isset($_SESSION['username'])){
