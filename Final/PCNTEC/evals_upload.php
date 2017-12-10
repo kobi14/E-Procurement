@@ -24,7 +24,7 @@ $tecid=$_SESSION["tec_data"]["TecID"];
 $sql="INSERT INTO `teceval` (`TecID`, `TenderID`, `BidderID`, `EvaluateFile`, `Score`) VALUES ('$tecid', '$tenderid', '$bidderid', '$target_file', '$score')";
 //update finaleval table
 $sql1="SELECT * FROM finaleval WHERE TenderID='$tenderid' AND BidderID='$bidderid' ";
-$result1=mysqli_query($link, $sql1);
+$result1=mysqli_query($conn, $sql1);
 if ($result1) {
   $row=mysqli_fetch_assoc($result1);
   $curAvg=$row['AvgScore'];$curDocs=$row['Docs'];
@@ -39,7 +39,7 @@ if ($result1) {
 
 $sql2="UPDATE `finaleval` SET `AvgScore` = '$avgscore', `Docs` = '$docs' WHERE `finaleval`.`TenderID` = '$tenderid' AND `finaleval`.`BidderID` = '$bidderid'";
 
-if(mysqli_query($link, $sql) && mysqli_query($link, $sql2) ){
+if(mysqli_query($conn, $sql) && mysqli_query($conn, $sql2) ){
   $_SESSION['flashdata1']="Evaluated document submitted succesfully!";
   //echo $_POST["pdf"];
   header('Location: evals.php');

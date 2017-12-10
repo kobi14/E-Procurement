@@ -31,14 +31,14 @@ function user_login($user,$pass){
     include "connection.php";
     //$hashed=password_hash($pass,PASSWORD_DEFAULT)
     $sql="SELECT * FROM tec WHERE TecID='$user' AND TecKey='$pass' ";
-    $result = mysqli_query($link,$sql);
+    $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($result);
 
     $sql1="SELECT * FROM pc WHERE PcID='$user' AND PcKey='$pass' ";
-    $result1 = mysqli_query($link,$sql1);
+    $result1 = mysqli_query($conn,$sql1);
     $row1 = mysqli_fetch_assoc($result1);
     if((!$result) && (!$result1)){
-      echo "Could not execute query".mysqli_error($link);
+      echo "Could not execute query".mysqli_error($conn);
     }
 
 

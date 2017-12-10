@@ -115,7 +115,7 @@ if (isset($_SESSION['tec_data'])) {
 				$sql="SELECT TenderID FROM gaccess WHERE TecID='$tecid' AND Status=1 ";
 				//$sql1 = "SELECT * FROM bid";
 
-				$result = mysqli_query($link, $sql);
+				$result = mysqli_query($conn, $sql);
 			 ?>
 	        <div class="content">
 	            <div class="container-fluid">
@@ -160,7 +160,7 @@ if (isset($_SESSION['tec_data'])) {
 																					<?php
 																						$tenid=$row['TenderID'];
 																						$sql1="SELECT * FROM `finaleval` WHERE TenderID='$tenid' ORDER BY `finaleval`.`AvgScore` DESC";
-																						$result1 = mysqli_query($link, $sql1);
+																						$result1 = mysqli_query($conn, $sql1);
 																					?>
 																			    <tbody>
 																						<?php if($result1){
@@ -168,7 +168,7 @@ if (isset($_SESSION['tec_data'])) {
 																							while ($row1 = mysqli_fetch_assoc($result1)){
 																								$bidderid=$row1['BidderID'];
 																								$sql3="SELECT * FROM bidder WHERE BidderID='$bidderid'";
-																								$result3 = mysqli_query($link, $sql3);
+																								$result3 = mysqli_query($conn, $sql3);
 																								$row3 = mysqli_fetch_assoc($result3)
 																							?>
 																			        <tr>

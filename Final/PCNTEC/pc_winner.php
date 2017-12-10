@@ -96,7 +96,7 @@ if (isset($_SESSION['pc_data'])) {
 				//$tecid=$tec['TecID'];
 				$sql="SELECT * FROM tender ";
 				//$sql1 = "SELECT * FROM bid";
-				$result = mysqli_query($link, $sql); ?>
+				$result = mysqli_query($conn, $sql); ?>
 	        <div class="content">
 	            <div class="container-fluid">
 	                <div class="row">
@@ -116,7 +116,7 @@ if (isset($_SESSION['pc_data'])) {
 																			 while ($row = mysqli_fetch_assoc($result)){
 																				 $tenid=$row['TenderID'];
 																				 $sql5="SELECT * FROM bid WHERE TenderID='$tenid' AND Status='1'  ";
-																				 $result5 = mysqli_query($link, $sql5);
+																				 $result5 = mysqli_query($conn, $sql5);
 																				 $bidwin=0;
 																				 if ($result5) {
 																					 if(mysqli_num_rows($result5)>=1){
@@ -154,7 +154,7 @@ if (isset($_SESSION['pc_data'])) {
 																								 </thead>
 																								 <?php
 																									 $sql1="SELECT * FROM `finaleval` WHERE TenderID='$tenid' ORDER BY `finaleval`.`AvgScore` DESC";
-																									 $result1 = mysqli_query($link, $sql1);
+																									 $result1 = mysqli_query($conn, $sql1);
 																								 ?>
 																								 <tbody>
 																									 <?php if($result1){
@@ -162,7 +162,7 @@ if (isset($_SESSION['pc_data'])) {
 																										 while ($row1 = mysqli_fetch_assoc($result1)){
 																											 $bidderid=$row1['BidderID'];
 																											 $sql3="SELECT * FROM bidder WHERE BidderID='$bidderid'";
-																											 $result3 = mysqli_query($link, $sql3);
+																											 $result3 = mysqli_query($conn, $sql3);
 																											 $row3 = mysqli_fetch_assoc($result3);
 																											 //pass the winner update quary
 																											 $sql4="UPDATE `bid` SET `Status` = '1' WHERE `bid`.`BidderID` = '$bidderid' AND `bid`.`TenderID` = '$tenid'";

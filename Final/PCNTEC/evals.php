@@ -43,7 +43,7 @@ if (isset($_SESSION['tec_data'])) {
 		$sql="SELECT * FROM bid WHERE TenderID IN (SELECT TenderID FROM gaccess WHERE TecID='$tecid' AND Status=1)";
 		//$sql1 = "SELECT * FROM bid";
 
-		$result = mysqli_query($link, $sql);
+		$result = mysqli_query($conn, $sql);
 	 ?>
 
 	<div class="wrapper">
@@ -133,14 +133,14 @@ if (isset($_SESSION['tec_data'])) {
 																							 <?php
 																							  $id = $row["BidderID"];
 																							 	$sql1="SELECT Name FROM bidder WHERE BidderID='$id'";
-																								$result1 = mysqli_query($link, $sql1);
+																								$result1 = mysqli_query($conn, $sql1);
 																								$row1 = mysqli_fetch_array($result1);
 
 																								$tecid=$tec['TecID'];
 																								$tenid=$row['TenderID'];
 																								$bidderid=$row['BidderID'];
 																								$sql2="SELECT * FROM teceval WHERE TecID='$tecid' AND TenderID='$tenid' AND BidderID= '$bidderid' ";
-																								$result2 = mysqli_query($link, $sql2);
+																								$result2 = mysqli_query($conn, $sql2);
 																								$row_cnt = mysqli_num_rows($result2);
 																								//$row_cnt=1;
 																							 ?>
