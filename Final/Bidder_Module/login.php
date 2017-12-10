@@ -3,6 +3,8 @@
 include "connect.php";
 include "functions.php";
 
+session_start();
+
 $username=$pass=$user="";
 $errusername=$errpass=$errlogin=$errtype="";
 
@@ -37,6 +39,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         include_once "../Operator/opfun.php";
 
     	$errlogin=user_loginopr($username,$pass);
+    }elseif ($errusername=="" and $errpass=="" and $role=="2"){
+        include_once "../PCNTEC/tecLogFunc.php";
+
+        $errlogin=user_logintec($username,$pass);
+
+
+
+    }elseif ($errusername=="" and $errpass=="" and $role=="3"){
+        include_once "../PCNTEC/tecLogFunc.php";
+
+        $errlogin=user_loginpc($username,$pass);
     }
 }
 
