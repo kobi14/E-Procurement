@@ -58,10 +58,11 @@ foreach($result as $row)
 
     $sub_array = array();
     $sub_array[] = $row['TecID'];
-    $sub_array[] = $row['MebID'];
+    $sub_array[] = $row['TecName'];
     $sub_array[] = $row['TecMail'];
     $sub_array[] = $row['TpNO'];
     $sub_array[] = $row['Spc'];
+    $sub_array[] = $row['TecAbout'];
 
     $sub_array[] = '<button type="button" name="update" id="'.$row["TecID"].'"  class="btn btn-warning btn-xs update">Access</button>';
     $sub_array[] = '<button type="button" name="delete" id="'.$row["TecID"].'" class="btn btn-danger btn-xs delete">Delete</button>';

@@ -193,7 +193,7 @@ if(!isset($_SESSION['username']))
 									<!--<div id="result"></div>-->
 <!--                             -->
 
-												<div class="clear:both"></div>
+
 								<div class="panel-body">
 									<div class="row"><div class="col-sm-12 table-responsive">
 										<table id="user_data" class="table table-bordered table-striped">
@@ -206,10 +206,11 @@ if(!isset($_SESSION['username']))
 												<!--<th>Edit</th>-->
 												<!--<th>Delete</th>-->
 												<th>Tec ID</th>
-												<th>Member ID</th>
+												<th>Tec Name</th>
 												<th>Tec Mail</th>
 												<th>Tp NO</th>
 												<th>Special</th>
+                                                <th>About</th>
 												<th class="text-left">Grand OP</th>
                                                 <th class="text-left">Delete Tec</th>
 											</tr>
@@ -223,51 +224,20 @@ if(!isset($_SESSION['username']))
 
 
 
-	                            </div>
-	                        </div>
-	                    </div>
 
 
 
 
-	<div id="userModal" class="modal fade" >
-		<div class="modal-dialog">
-			<form method="post" id="user_form" action="../function/tec_action.php">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title"><i class="fa fa-plus"></i> Add User</h4>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>TecID</label>
-							<input type="text"  name="tec_id" id="tec_id" class="form-control" readonly="true" />
-						</div>
-                        <div class="form-group">
-                            <label>TEC Specialized In</label>
-                            <input type="text" name="spc" id="spc_" class="form-control" disabled />
-                        </div>
-						<div class="form-group">
-							<label>Enter Tender ID</label>
-							<input type="text" name="tid" id="tid" class="form-control" required />
-						</div>
-<!--						<div class="form-group">-->
-<!--							<label>Enter User Password</label>-->
-<!--							<input type="password" name="user_password" id="user_password" class="form-control" required />-->
-<!--						</div>-->
-					</div>
-					<div class="modal-footer">
-<!--						<input type="hidden" name="tec_id" id="tec_id" />-->
-<!--						<input type="hidden" name="btn_action" id="btn_action" />-->
-<!--						<input type="submit" name="action" id="action" class="btn btn-info" value="Edit" />-->
-                        <input type="submit" name="submit"  class="btn btn-info" value="Submit" />
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</form>
 
-		</div>
-	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+
+
+
 
 					<footer class="footer">
 				 		 <div class="container-fluid">
@@ -302,7 +272,48 @@ if(!isset($_SESSION['username']))
 				  </footer>
             </div>
         </div>
+
+
+    <div id="userModal" class="modal fade" >
+        <div class="modal-dialog" >
+            <form method="post" id="user_form" action="../function/tec_action.php">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><i class="fa fa-plus"></i> </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>TecID</label>
+                            <input type="text"  name="tec_id" id="tec_id" class="form-control" readonly="true" />
+                        </div>
+                        <div class="form-group">
+                            <label>TEC Specialized In</label>
+                            <input type="text" name="spc" id="spc_" class="form-control" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Tender ID</label>
+                            <input type="text" name="tid" id="tid" class="form-control" required />
+                        </div>
+                        <!--						<div class="form-group">-->
+                        <!--							<label>Enter User Password</label>-->
+                        <!--							<input type="password" name="user_password" id="user_password" class="form-control" required />-->
+                        <!--						</div>-->
+                    </div>
+                    <div class="modal-footer">
+                        <!--						<input type="hidden" name="tec_id" id="tec_id" />-->
+                        <!--						<input type="hidden" name="btn_action" id="btn_action" />-->
+                        <!--						<input type="submit" name="action" id="action" class="btn btn-info" value="Edit" />-->
+                        <input type="submit" name="submit"  class="btn btn-info" value="Submit" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
     </div>
+
+
 
 
 
