@@ -185,7 +185,7 @@ if (isset($_SESSION['tec_data'])) {
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label" >Email address</label>
-													<input type="email" name="email" class="form-control" value="<?php echo $tec['TecEmail'] ?>" >
+													<input type="email" name="email" class="form-control" value="<?php echo $tec['TecMail'] ?>" >
 												</div>
 	                                        </div>
 	                                    </div>
@@ -200,7 +200,7 @@ if (isset($_SESSION['tec_data'])) {
 	                                       <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Phone NO</label>
-													<input type="number" name="contact" class="form-control" value="<?php echo $tec['TecContact'] ?>" >
+													<input type="number" name="contact" class="form-control" value="<?php echo $tec['TpNO'] ?>" >
 												</div>
 	                                        </div>
 	                                    </div>

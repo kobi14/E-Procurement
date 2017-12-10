@@ -10,7 +10,7 @@ $email = $_POST['email'];
 $contact = $_POST['contact'];
 $about = $_POST['about'];
 
-$sql = "UPDATE tec SET TecName= '$name',TecEmail= '$email',TecContact= '$contact',TecAbout= '$about'  WHERE TecID = '$id'";
+$sql = "UPDATE tec SET TecName= '$name',TecMail= '$email',TpNO= '$contact',TecAbout= '$about'  WHERE TecID = '$id'";
 
 if(mysqli_query($conn, $sql)){
     echo "Records were updated successfully.";

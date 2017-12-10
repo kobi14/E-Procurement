@@ -30,7 +30,7 @@ function validate_contact($data){
 function user_login($user,$pass){
     include "connection.php";
     //$hashed=password_hash($pass,PASSWORD_DEFAULT)
-    $sql="SELECT * FROM tec WHERE TecID='$user' AND TecKey='$pass' ";
+    $sql="SELECT * FROM tec WHERE TecID='$user' AND TecPwd='$pass' ";
     $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($result);
 
