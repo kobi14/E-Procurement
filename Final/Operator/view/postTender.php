@@ -82,7 +82,7 @@ if(!isset($_SESSION['username']))
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="PostWinners.php">
+	                    <a href="viewbidder.php">
 	                        <i class="material-icons">bubble_chart</i>
 	                        <p>Post Winners</p>
 	                    </a>
