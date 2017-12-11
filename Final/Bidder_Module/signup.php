@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if(empty($nam)){
         $errfilename= "File needed to be uploaded";
       }else {
-        $userfile="../Operator/bidderinfo/".basename($_FILES["userfile"]["name"]);
+        $userfile="bidderinfo/".basename($_FILES["userfile"]["name"]);
         move_uploaded_file($_FILES["userfile"]["tmp_name"],  $userfile);
       }
 

@@ -1,5 +1,29 @@
+<?php
+include "../../functions.php";
+
+session_start();
+
+if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
+
+{
+
+
+    header('location:../../Bidder_Module/login.php');
+}elseif(isset($_SESSION['username'])){
+
+//    echo "<script type='text/javascript'>
+//
+//            alert('Hi,Successfully Login');
+//
+//
+//    </script>";
+}
+
+?>
+
+
 <!doctype html>
-<html lang="en">
+<htmllang="en">
 <head>
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
@@ -63,7 +87,7 @@
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="bids.html">
+	                    <a href="bids.php">
 	                        <i class="material-icons">library_books</i>
 	                        <p>My bids</p>
 	                    </a>
@@ -75,14 +99,14 @@
 	                        <p>Notifications</p>
 	                    </a>
 	                </li>
-	                <li>
-	                    <a href="followers.php">
-	                        <i class="material-icons text-gray">assistant_photo</i>
-	                        <p>Followers</p>
-	                    </a>
-	                </li>
+<!--	                <li>-->
+<!--	                    <a href="followers.php">-->
+<!--	                        <i class="material-icons text-gray">assistant_photo</i>-->
+<!--	                        <p>Followers</p>-->
+<!--	                    </a>-->
+<!--	                </li>-->
 					<li class="active-pro">
-	                      <a href="http://localhost/e-procurement/UI/logout.php">
+                        <a href="../../logout.php">
 	                        <i class="material-icons">unarchive</i>
 	                        <p><b>LogOut</b></p>
 	                    </a>
@@ -169,13 +193,14 @@
 										<thead class="text-primary">
 
                         <th style="font-size: 15px"><b>Tender ID</b></th>
-                        <th style="font-size: 15px"><b>Tender</b></th>
-												<th style="font-size: 15px"><b>Owner</b></th>
+                        <th style="font-size: 15px"><b>Tender Title</b></th>
+                        <th style="font-size: 15px"><b>Tender File</b></th>
+                        <th style="font-size: 15px"><b>Owner</b></th>
                         <th style="font-size: 15px"><b>Open Date</b></th>
-												<th style="font-size: 15px"><b>Open Time</b></th>
-												<th style="font-size: 15px"><b>Expiry Date</b></th>
+                        <th style="font-size: 15px"><b>Open Time</b></th>
+                        <th style="font-size: 15px"><b>Expiry Date</b></th>
                         <th style="font-size: 15px"><b>Expiry Time</b></th>
-												<th style="font-size: 15px"><b>Category</b></th>
+                        <th style="font-size: 15px"><b>Category</b></th>
 
 												<tbody id="data">
 

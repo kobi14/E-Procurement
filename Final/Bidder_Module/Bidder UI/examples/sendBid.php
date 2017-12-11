@@ -2,7 +2,7 @@
 include "../../connect.php";
 date_default_timezone_set('Asia/Kolkata');
 
-$userfile="BidSub/".basename($_FILES["file1"]["name"]);
+$userfile="../../BidSub/".basename($_FILES["file1"]["name"]);
 move_uploaded_file($_FILES["file1"]["tmp_name"],  $userfile);
 
 $tender=$_POST['tenderID'];
@@ -16,7 +16,7 @@ $sql="INSERT INTO bid (BidderID,TenderID,sDate,sTime,BidFile) VALUES ('$bidder',
 $result=mysqli_query($conn,$sql);
 
 if(!$result){
-  echo mysqli_error();
+  echo mysqli_error($conn);
 }else{
 
   header("location:searchdup.php");

@@ -3,7 +3,7 @@ include "../opfun.php";
 
 session_start();
 
-if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
+if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 
 {
 
@@ -11,12 +11,12 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
     header('location:../../Bidder_Module/login.php');
 }elseif(isset($_SESSION['username'])){
 
-    echo "<script type='text/javascript'>
-           
-            alert('Hi,Successfully Login');
-
-
-    </script>";
+//    echo "<script type='text/javascript'>
+//
+//            alert('Hi,Successfully Login');
+//
+//
+//    </script>";
 }
 
 ?>
@@ -113,7 +113,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 					<li class="active-pro">
 	                    <a href="../../Bidder_Module/logout.php">
 	                        <i class="material-icons">unarchive</i>
-	                        <p>SingOut</p>
+	                        <p>LogOut</p>
 	                    </a>
 	                </li>
 	            </ul>

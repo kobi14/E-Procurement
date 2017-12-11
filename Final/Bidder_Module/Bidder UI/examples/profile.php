@@ -1,8 +1,29 @@
 <?php
 
-include "../../connect.php";
-include '../../functions.php';
+
+
 session_start();
+
+if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
+
+{
+
+
+    header('location:../../Bidder_Module/login.php');
+}elseif(isset($_SESSION['username'])){
+
+//    echo "<script type='text/javascript'>
+//
+//            alert('Hi,Successfully Login');
+//
+//
+//    </script>";
+}
+
+
+include "../../connect.php";
+include "../../functions.php";
+//session_start();
 $password1=$password2=$email=$contact=$user="";
 $errpass=$errpass1=$errpass2=$errmail=$errcontact="";
 
@@ -129,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		                    </a>
 		                </li>
 		                <li>
-		                    <a href="bids.html">
+		                    <a href="bids.php">
 		                        <i class="material-icons">library_books</i>
 		                        <p>My bids</p>
 		                    </a>
@@ -141,14 +162,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		                        <p>Notifications</p>
 		                    </a>
 		                </li>
-		                <li>
-	                    <a href="followers.php">
-	                        <i class="material-icons text-gray">assistant_photo</i>
-	                        <p>Followers</p>
-	                    </a>
-	                </li>
+<!--		                <li>-->
+<!--	                    <a href="followers.php">-->
+<!--	                        <i class="material-icons text-gray">assistant_photo</i>-->
+<!--	                        <p>Followers</p>-->
+<!--	                    </a>-->
+<!--	                </li>-->
 						<li class="active-pro" >
-                        <a href="http://localhost/e-procurement/UI/logout.php">
+                            <a href="../../logout.php">
                           <i class="material-icons">unarchive</i>
 		                       <p><b>LogOut</b></p>
 		                    </a>
