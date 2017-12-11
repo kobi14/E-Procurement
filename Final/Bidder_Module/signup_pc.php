@@ -1,8 +1,8 @@
 <?php
 include "connect.php";
 include "functions.php";
-$name=$u_username=$password1=$password2=$email=$contact="";
-$errname=$errusername=$errpass1=$errpass2=$errfilename=$errmail=$errcontact="";
+$name=$u_username=$password1=$password2=$email=$contact=$about="";
+$errname=$errusername=$errpass1=$errpass2=$errfilename=$errmail=$errcontact=$errabout="";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["name"])) {
         $errname = "Name is required";
@@ -43,15 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password2 = mysqli_real_escape_string($conn,md5($_POST["password2"]));
         $errpass2 = validate_text_and_numbers($password2);
     }
-      $nam="";
-      $userfile="";
-      $nam=basename($_FILES["userfile"]["name"]);
-      if(empty($nam)){
-        $errfilename= "File needed to be uploaded";
-      }else {
-        $userfile="bidderinfo/".basename($_FILES["userfile"]["name"]);
-        move_uploaded_file($_FILES["userfile"]["tmp_name"],  $userfile);
-      }
+
+
+
 
 
 
@@ -65,11 +59,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $errcontact = validate_contact($contact);
       }
 
-    if($errname=="" and $errusername=="" and $errpass1=="" and $errpass2=="" and $errfilename=="" and $errmail=="" and $errcontact==""){
+
+    $about=$_POST["about"];
+
+    if($errname=="" and $errusername=="" and $errpass1=="" and $errpass2=="" and  $errmail=="" and $errcontact=="" ){
 
 
 
-        register__bidder($name,$u_username,$password2,$userfile,$email,$contact);
+        register__pc($name,$u_username,$password2,$about,$email,$contact);
 
 
 
@@ -169,7 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         						<div class="card card-register">
                       <div class="row" style="margin:10px;">
                         <div class="col-md-4">
-                          <a href="signup.php" class="btn btn-info center-block" role="button" style="background-color:purple;">Bidder Registartionr</a>
+                          <a href="signup.php" class="btn btn-info center-block" role="button">Bidder Registartionr</a>
                         </div>
                         <div class="col-md-4">
                           <a href="signup_tec.php" class="btn btn-info center-block" role="button" >TEC Registartion</a>
@@ -177,7 +174,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         </div>
                         <div class="col-md-4">
-                          <a href="signup_pc.php" class="btn btn-info center-block" role="button">PC Registartion</a>
+                          <a href="signup_pc.php" class="btn btn-info center-block" role="button" style="background-color:purple;">PC Registartion</a>
 
                         </div>
 
@@ -185,7 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         							<form class="form" enctype="multipart/form-data"  action="<?php echo $_SERVER["PHP_SELF"];?>" method="POST">
 									<!--<form action="<?php //echo $_SERVER["PHP_SELF"];?>" method="POST">-->
         								<div class="header header-info text-center">
-        									<h4>Bidder's Registartion From</h4>
+        									<h4>PC Registartion From</h4>
 
         								</div>
         								<!--<p class="text-divider">Or Be Classical</p>-->
@@ -195,7 +192,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         										<span class="input-group-addon">
         											<i class="material-icons">face</i>
         										</span>
-        										<input type="text" class="form-control" name="name" placeholder="Busines Name..." value="<?php echo $name; ?>" />
+        										<input type="text" class="form-control" name="name" placeholder="Name..." value="<?php echo $name; ?>" />
 												<span><font color='red'><?php echo $errname; ?></font></span>
         									</div>
 
@@ -240,25 +237,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 												   <span><font color='red'><?php echo $errpass2; ?></font></span>
         									</div>
 
-                              <div class="file-field input-field">
-                                      <div class="btn-info">
-                                        <p style="text-align:center;">Upload Your Document File in "pdf"</p>
-                                        <input type="file" name="userfile" id="userfile" accept=".pdf">
-                                        </div>
-                                 <span><font color='red'><?php echo $errfilename;?></font></span>
-                                      <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text">
-                                      </div>
+                          <div class="input-group">
+                            <span class="input-group-addon">
+                              <i class="material-icons">account_circle</i>
+                            </span>
+                            <textarea class="form-control" name="about" rows="2" value="" placeholder="About..."><?php echo $about; ?></textarea>
+                           <span><font color='red'></font></span>
+                          </div>
 
 
-                              <div class="checkbox">
-                								<label>
-                									<input type="checkbox" name="optionsCheckboxes">
-                									I Agree above details
-                								</label>
-                							</div>
 
-        								</div>
         								<div class="footer text-center">
         									<button  type="submit" name="submit" value="Submit" class="btn btn-simple btn-primary btn-lg">Submit</button>
                           <button type="reset" value="Reset" class="btn btn-simple btn-primary btn-lg">Reset</button>

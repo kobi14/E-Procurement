@@ -142,6 +142,44 @@ function register__bidder($name,$user,$passwordN,$userfile,$email,$contact){
 
 }
 
+function register__tec($name,$user,$passwordN,$about,$email,$contact,$spc){
+    include 'connect.php';
+    //$hash=md5($passwordN);
+
+    $sql = "INSERT INTO `tec` (`TecID`, `TecName`, `TecMail`, `TpNO`, `Spc`, `TecPwd`, `TecAbout`) VALUES ('$user', '$name', '$email', '$contact', '$spc', '$passwordN', '$about')  ";
+    $result=mysqli_query($conn,$sql);
+    if(!$result){
+      echo mysqli_error($conn);
+    }else{
+      echo '<script type="text/javascript">
+        alert("Thank you for registering");
+        </script>';
+    }
+
+    header("location:login.php");
+
+
+}
+
+function register__pc($name,$user,$passwordN,$about,$email,$contact){
+    include 'connect.php';
+    //$hash=md5($passwordN);
+
+    $sql = "INSERT INTO `pc` (`PcID`, `PcName`, `PcEmail`, `PcContact`, `PcKey`, `PcAbout`) VALUES ('$user', '$name', '$email', '$contact', '$passwordN', '$about') ";
+    $result=mysqli_query($conn,$sql);
+    if(!$result){
+      echo mysqli_error($conn);
+    }else{
+      echo '<script type="text/javascript">
+        alert("Thank you for registering");
+        </script>';
+    }
+
+    header("location:login.php");
+
+
+}
+
 function validate_username($user){
     include 'connect.php';
     if (!preg_match("/^[a-zA-Z0-9]*$/",$user)) {
