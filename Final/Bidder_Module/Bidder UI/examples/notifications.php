@@ -85,7 +85,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="bids.html">
+	                    <a href="bids.php">
 	                        <i class="material-icons">library_books</i>
 	                        <p>My bids</p>
 	                    </a>
@@ -97,12 +97,12 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 	                        <p>Notifications</p>
 	                    </a>
 	                </li>
-	                <li>
-	                    <a href="followers.php">
-	                        <i class="material-icons text-gray">assistant_photo</i>
-	                        <p>Followers</p>
-	                    </a>
-	                </li>
+<!--	                <li>-->
+<!--	                    <a href="followers.php">-->
+<!--	                        <i class="material-icons text-gray">assistant_photo</i>-->
+<!--	                        <p>Followers</p>-->
+<!--	                    </a>-->
+<!--	                </li>-->
 					<li class="active-pro">
 	                      <a href="http://localhost/e-procurement/UI/logout.php">
 	                        <i class="material-icons">unarchive</i>
