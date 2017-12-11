@@ -72,7 +72,7 @@ if (isset($_SESSION['pc_data'])) {
 												<li >
 													<a href="pc_winner.php">
 														<i class="material-icons">bubble_chart</i>
-														<p>Choosed Winners</p>
+														<p>Select Winners</p>
 													</a>
 												</li>
 
@@ -96,11 +96,52 @@ if (isset($_SESSION['pc_data'])) {
 			<div class="content">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class=" col-md-12 col-sm-12">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="orange">
 									<i class="material-icons">content_copy</i>
 								</div>
+								<h3>WELCOME! <?php echo $pc['PcName'] ?></h3>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="card" style="width: 30rem;">
+									  <img class="card-img-top" src="profile.png" alt="Card image cap">
+									  <div class="card-block" align="center">
+									    <h4 class="card-title">My Profile</h4>
+									    <p class="card-text">See your profile details and edit  your profile..</p>
+									    <a href="pc_profile.php" class="btn btn-primary" style="background-color:green;">MY PROFILE</a>
+									  </div>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="card" style="width: 30rem;">
+									  <img class="card-img-top" src="icon_play.png" alt="Card image cap">
+									  <div class="card-block" align="center">
+									    <h4 class="card-title">Select Winners</h4>
+									    <p class="card-text">Select the winner of the tenders..e</p>
+									    <a href="pc_winner.php" class="btn btn-primary" style="background-color:green;" >SELECT WINNERS</a>
+									  </div>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="card" style="width: 30rem;">
+									  <img class="card-img-top" src="Logout.png" alt="Card image cap">
+									  <div class="card-block" align="center">
+									    <h4 class="card-title">SIGNOUT</h4>
+									    <p class="card-text">Signout from your account..</p>
+									    <a href="pc_logout.php" class="btn btn-primary" style="background-color:green;">SIGN OUT</a>
+									  </div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 </body>
 

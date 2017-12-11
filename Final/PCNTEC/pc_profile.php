@@ -73,7 +73,7 @@ if (isset($_SESSION['pc_data'])) {
 			 					 <li >
 			 						 <a href="pc_winner.php">
 			 							 <i class="material-icons">bubble_chart</i>
-			 							 <p>Choosed Winners</p>
+			 							 <p>Select Winners</p>
 			 						 </a>
 			 					 </li>
 

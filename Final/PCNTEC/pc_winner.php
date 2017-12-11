@@ -74,7 +74,7 @@ if (isset($_SESSION['pc_data'])) {
 								<li class="active">
 									<a href="pc_winner.php">
 									  <i class="material-icons">bubble_chart</i>
-									  <p>Choosed Winners</p>
+									  <p>Select Winners</p>
 									</a>
 								</li>
 
@@ -94,7 +94,7 @@ if (isset($_SESSION['pc_data'])) {
 			</nav>
 			<?php
 				//$tecid=$tec['TecID'];
-				$sql="SELECT * FROM tender ";
+				$sql="SELECT * FROM tender WHERE CDate < CURDATE()";
 				//$sql1 = "SELECT * FROM bid";
 				$result = mysqli_query($conn, $sql); ?>
 	        <div class="content">
@@ -115,6 +115,7 @@ if (isset($_SESSION['pc_data'])) {
 																			 $num=1;
 																			 while ($row = mysqli_fetch_assoc($result)){
 																				 $tenid=$row['TenderID'];
+																				 $_SESSION["tenderid".$num]=$tenid;
 																				 $sql5="SELECT * FROM bid WHERE TenderID='$tenid' AND Status='1'  ";
 																				 $result5 = mysqli_query($conn, $sql5);
 																				 $bidwin=0;
@@ -135,7 +136,6 @@ if (isset($_SESSION['pc_data'])) {
 
 
 																					 </a>
-																					 <p><?php echo $bidwin;?></p>
 																				 </h4>
 																			 </div>
 																			 <div id="<?php echo $num ?>" class="panel-collapse collapse">
@@ -147,7 +147,7 @@ if (isset($_SESSION['pc_data'])) {
 																												 <th>Bidder Name</th>
 																												 <th>BidderID</th>
 																												 <th>Avg Score</th>
-																												 <th>Bidder File</th>
+																												 <th>Bidder Registration File</th>
 																												 <th>Select Winner</th>
 
 																										 </tr>
@@ -175,7 +175,7 @@ if (isset($_SESSION['pc_data'])) {
 																												 <td><?php echo $row1['AvgScore']?></td>
 																												 <td ><a href="../Bidder_Module/<?php echo $row3['TdFile']; ?>">Download </a></td>
 																												 <td class="text-right"><div class="radio">
-																											      <label><input type="radio" name="optradio" value="<?php echo $sql4; ?>" <?php if($bidwin==1){?> disabled	  <?php } ?>><b><b></label>
+																											      <label><input type="radio" name="optradio" value="<?php echo $bidderid; ?>" <?php if($bidwin==1){?> disabled	  <?php } ?>><b><b></label>
 																											    </div></td>
 
 																										 </tr>
@@ -187,7 +187,21 @@ if (isset($_SESSION['pc_data'])) {
 
 																								 </tbody>
 																						 </table>
-																						 <button style="background-color:green;" type="submit" class="btn btn-primary pull-right" <?php if($bidwin==1){?> disabled <?php } ?>>SUBMIT</button>
+																						 <div class="row">
+																							 <div class="col-md-10">
+																								 <div class="form-group">
+																									<div class="form-group label-floating">
+																					    				<label class="control-label"> Description</label>
+																				    					<textarea class="form-control" name="description<?php echo $num ?>" rows="3"></textarea>
+														                      </div>
+	                                            	</div>
+																							 </div>
+																							 <div class="col-md-2">
+																								 <button style="background-color:green;" type="submit" name="submit<?php echo $num ?>" class="btn btn-primary pull-right" <?php if($bidwin==1){?> disabled <?php } ?>>SUBMIT</button>
+
+																							 </div>
+
+																						 </div>
 
 																						 </form>
 
@@ -197,7 +211,11 @@ if (isset($_SESSION['pc_data'])) {
 																		 </div>
 																		 <?php
 																		 $num=$num+1;
+
+
+
 																	 }
+																	 $_SESSION["pcnum"]=$num;
 																 }
 																		 ?>
 																	 </div>
