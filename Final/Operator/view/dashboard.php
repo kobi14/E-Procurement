@@ -3,7 +3,7 @@ include "../opfun.php";
 
 session_start();
 
-if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
+if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 
 {
 
