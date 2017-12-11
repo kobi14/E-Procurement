@@ -14,6 +14,8 @@ for ($num=1; $num <$numv ; $num++) {
     $tenid=$_SESSION["tenderid".$num];
   }
 }
+$sql2="UPDATE `bid` SET `Status` = '2' WHERE  `bid`.`TenderID` = '$tenid'";
+$result1=mysqli_query($conn, $sql2);
 
 $sql1="UPDATE `bid` SET `Description` = '$des',`Status` = '1' WHERE `bid`.`BidderID` = '$bidderid' AND `bid`.`TenderID` = '$tenid'";
 $result = mysqli_query($conn, $sql1);
