@@ -84,7 +84,7 @@ if(!isset($_SESSION['username']))
 	                <li>
 	                    <a href="viewbidder.php">
 	                        <i class="material-icons">bubble_chart</i>
-	                        <p>Post Winners</p>
+	                        <p>Access</p>
 	                    </a>
 	                </li>
 
