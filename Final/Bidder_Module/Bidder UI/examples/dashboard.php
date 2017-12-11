@@ -9,7 +9,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 {
 
 
-header('location:../../Bidder_Module/login.php');
+    header('location:../../login.php');
 }elseif(isset($_SESSION['username'])){
 //
 //echo "<script type='text/javascript'>
