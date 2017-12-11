@@ -3,20 +3,14 @@ include "../opfun.php";
 
 session_start();
 
-if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
+if(!isset($_SESSION['username']))
 
 {
-
 
     header('location:../../Bidder_Module/login.php');
 }elseif(isset($_SESSION['username'])){
 
-//    echo "<script type='text/javascript'>
-//
-//            alert('Hi,Successfully Login');
-//
-//
-//    </script>";
+
 }
 
 ?>
@@ -60,58 +54,42 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 		    -->
 
 			<div class="logo">
-				<a href="dashboard.php" class="simple-text">
-					Operator
+				<a href="#" class="simple-text">
+					C.P.Operator
                     <br>
                     <?php echo "WelCome : ".$_SESSION['username'] ; ?>
 				</a>
 			</div>
-								<div class="sidebar-wrapper">
-											<ul class="nav">
-													<li class="active">
-															<a href="dashboard.php">
-																	<i class="material-icons">dashboard</i>
-																	<p>Dashboard</p>
-															</a>
-													</li>
-													<li>
-															<a href="AccTO.php">
-																	<i class="material-icons">person</i>
-																	<p>Access To TEC</p>
-															</a>
-													</li>
-													<li>
-															<a href="postTender.php">
-																	<i class="material-icons">content_paste</i>
-																	<p>Post Tender</p>
-															</a>
-													</li>
-													<li>
-															<a href="viewbidder.php">
-																	<i class="material-icons">bubble_chart</i>
-																	<p>Post Winners</p>
-															</a>
-													</li>
-	               <!-- <li>
-	                    <a href="icons.html">
-	                        <i class="material-icons">bubble_chart</i>
-	                        <p>Icons</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="maps.html">
-	                        <i class="material-icons">location_on</i>
-	                        <p>Maps</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="notifications.html">
-	                        <i class="material-icons text-gray">notifications</i>
-	                        <p>Notifications</p>
-	                    </a>
-	                </li>-->
+
+	    	<div class="sidebar-wrapper">
+	            <ul class="nav">
+								<li >
+										<a href="dashboard.php">
+												<i class="material-icons">dashboard</i>
+												<p>Dashboard</p>
+										</a>
+								</li>
+								<li>
+										<a href="AccTo.php">
+												<i class="material-icons">person</i>
+												<p>Access To TEC</p>
+										</a>
+								</li>
+								<li>
+										<a href="postTender.php">
+												<i class="material-icons">content_paste</i>
+												<p>Post Tender</p>
+										</a>
+								</li>
+								<li class="active">
+										<a href="viewbidder.php">
+												<i class="material-icons">bubble_chart</i>
+												<p>Access</p>
+										</a>
+								</li>
+
 					<li class="active-pro">
-	                    <a href="../../Bidder_Module/logout.php">
+                        <a href="../../Bidder_Module/logout.php">
 	                        <i class="material-icons">unarchive</i>
 	                        <p>LogOut</p>
 	                    </a>
@@ -119,7 +97,6 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 	            </ul>
 	    	</div>
 	    </div>
-
 
 	    <div class="main-panel">
 			<nav class="navbar navbar-transparent navbar-absolute">
@@ -176,7 +153,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 				</div>-->
 			</nav>
 
-            <div class="content">
+	            <div class="content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
@@ -185,81 +162,75 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                                     <h4 class="title">Activite Tender </h4>
 
                                 </div>
-                                    <div class="panel-body">
-                                        <div class="row"><div class="col-sm-12 table-responsive">
-                                                <table id="user_data" class="table table-bordered table-striped">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>TenderID</th>
-                                                        <th>TenderFile</th>
-                                                        <th>TOwner</th>
-                                                        <th>ODate</th>
-                                                        <th>OTime</th>
-                                                        <th>CDate</th>
-                                                        <th>CTime</th>
-                                                        <th>Category</th>
-                                                        <th class="text-left">Grand OP</th>
-                                                        <th class="text-left">Delete Tec</th>
-                                                    </tr>
-                                                    </thead>
-                                                </table>
-                                            </div>
+                                <div class="panel-body">
+                                    <div class="row"><div class="col-sm-12 table-responsive">
+                                            <table id="user_data" class="table table-bordered table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th>BidderID</th>
+                                                    <th>BidderFile</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>ContactNO</th>
+                                                    <th>Status</th>
+<!--                                                    <th>CTime</th>-->
+<!--                                                    <th>Category</th>-->
+                                                    <th class="text-left">Grand OP</th>
+                                                    <th class="text-left">Delete Tec</th>
+                                                </tr>
+                                                </thead>
+                                            </table>
                                         </div>
                                     </div>
-								</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
+					<footer class="footer">
+				 		 <div class="container-fluid">
+				 				 <nav class="pull-left">
+				 						 <ul>
+				 								 <li>
+				 										 <a href="#">
+				 												 Home
+				 										 </a>
+				 								 </li>
+				 								<!-- <li>
+				 										 <a href="#">
+				 												 Company
+				 										 </a>
+				 								 </li>
+				 								 <li>
+				 										 <a href="#">
+				 												 Portfolio
+				 										 </a>
+				 								 </li>
+				 								 <li>
+				 										 <a href="#">
+				 												Blog
+				 										 </a>
+				 								 </li>-->
+				 						 </ul>
+				 				 </nav>
+				 				 <p class="copyright pull-right">
+				 						 &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">E-Procurement</a>
+				 				 </p>
+				 		 </div>
+				  </footer>
+	    </div>
+	</div>
 
-
-
-
-
-
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav class="pull-left">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    Home
-                                </a>
-                            </li>
-                            <!-- <li>
-                                     <a href="#">
-                                             Company
-                                     </a>
-                             </li>
-                             <li>
-                                     <a href="#">
-                                             Portfolio
-                                     </a>
-                             </li>
-                             <li>
-                                     <a href="#">
-                                            Blog
-                                     </a>
-                             </li>-->
-                        </ul>
-                    </nav>
-                    <p class="copyright pull-right">
-                        &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">E-Procurement</a>
-                    </p>
-                </div>
-            </footer>
-
-        </div>
-    </div>
 
     <div id="userModal" class="modal fade" >
         <div class="modal-dialog">
-            <form method="post" id="user_form" action="../function/dash_action.php">
+            <form method="post" id="user_form" action="../function/bidder_action.php">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><i class="fa fa-plus"></i> Add User</h4>
+                        <h4 class="modal-title"><i class="fa fa-plus"></i></h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -273,24 +244,23 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                         <div class="form-group">
                             <label>Tender Closing Time</label>
                             <input type="time" name="ct" id="ct_" class="form-control" required />
-<!--                        </div>-->
-<!--                        <div class="form-group">-->
-<!--                            <label>Tender File</label>-->
-<!--                            <input type="file" name="tt" id="tt_" class="form-control" required />-->
-<!--                        </div>-->
+                            <!--                        </div>-->
+                            <!--                        <div class="form-group">-->
+                            <!--                            <label>Tender File</label>-->
+                            <!--                            <input type="file" name="tt" id="tt_" class="form-control" required />-->
+                            <!--                        </div>-->
 
+                        </div>
+                        <div class="modal-footer">
+                            <!--						<input type="hidden" name="tec_id" id="tec_id" />-->
+                            <!--                        <input type="hidden" name="btn_action" id="btn_action" />-->
+                            <input type="submit" name="submit"  class="btn btn-info" value="Submit"  />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <!--						<input type="hidden" name="tec_id" id="tec_id" />-->
-<!--                        <input type="hidden" name="btn_action" id="btn_action" />-->
-                        <input type="submit" name="submit"  class="btn btn-info" value="Submit"  />
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
             </form>
         </div>
     </div>
-
 
 </body>
 
@@ -301,7 +271,6 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 
 <script src="../assets/js/jquery.dataTables.min.js"></script>
 <script src="../assets/js/dataTables.bootstrap.min.js"></script>
-
 
 	<!--  Charts Plugin -->
 	<script src="../assets/js/chartist.min.js"></script>
@@ -318,16 +287,8 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 	<script src="../assets/js/demo.js"></script>
 
-	<script type="text/javascript">
-    	$(document).ready(function(){
-
-			// Javascript method's body can be found in assets/js/demos.js
-        	demo.initDashboardPageCharts();
-
-    	});
-	</script>
-
 </html>
+
 
 <script>
     $(document).ready(function(){
@@ -339,7 +300,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
             "serverSide": true,
             "order": [],
             "ajax":{
-                url:"../function/dash_fetch.php",
+                url:"../function/bidder_fetch.php",
                 type:"POST"
             },
             "columnDefs":[
@@ -354,43 +315,89 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 
 
 
-        $(document).on('click', '.update', function(){
-            var TenderID = $(this).attr("id");
-            var btn_action = 'fetch_single';
-            $.ajax({
-                url:"../function/dash_action.php",
-                method:"POST",
-                data:{TenderID:TenderID, btn_action:btn_action},
-                dataType:"json",
-                success:function(data)
-                {
-                    $('#userModal').modal('show');
-                    $('#t_id_').val(TenderID);
-                    $('#cd_').val(data.cd);
-                    $('#ct_').val(data.ct);
-
-
-
-
-                    $('.modal-title').html("<i class='fa fa-pencil-square-o'></i>Update Tender");
-
-//                    $('#action').val('Edit');
-//                    $('#btn_action').val('Edit');
-
-                }
-            })
-        });
+//        $(document).on('click', '.update', function(){
+//            var BidderID = $(this).attr("id");
+//            var btn_action = 'fetch_single';
+//            $.ajax({
+//                url:"../function/bidder_action.php",
+//                method:"POST",
+//                data:{BidderID:BidderID, btn_action:btn_action},
+//                dataType:"json",
+//                success:function(data)
+//                {
+//                    $('#userModal').modal('show');
+//                    $('#t_id_').val(BiddderID);
+////                    $('#cd_').val(data.cd);
+////                    $('#ct_').val(data.ct);
+//
+//
+//
+//
+//                    $('.modal-title').html("<i class='fa fa-pencil-square-o'></i>Update Tender");
+//
+////                    $('#action').val('Edit');
+////                    $('#btn_action').val('Edit');
+//
+//                }
+//            })
+//        });
 
         $(document).on('click', '.delete', function(){
-            var TenderID = $(this).attr("id");
+            var BidderID = $(this).attr("id");
 
             var btn_action = "delete";
             if(confirm("Are you sure you want to Delete?"))
             {
                 $.ajax({
-                    url:"../function/dash_action.php",
+                    url:"../function/bidder_action.php",
                     method:"POST",
-                    data:{TenderID:TenderID, btn_action:btn_action},
+                    data:{BidderID:BidderID, btn_action:btn_action},
+                    success:function(data)
+                    {
+                        $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
+                        userdataTable.ajax.reload();
+                    }
+                })
+            }
+            else
+            {
+                return false;
+            }
+        });
+
+        $(document).on('click', '.unblock', function(){
+            var BidderID = $(this).attr("id");
+
+            var btn_action = "unblock";
+            if(confirm("Are you sure you want to unblock the bidder?"))
+            {
+                $.ajax({
+                    url:"../function/bidder_action.php",
+                    method:"POST",
+                    data:{BidderID:BidderID, btn_action:btn_action},
+                    success:function(data)
+                    {
+                       // $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
+                        userdataTable.ajax.reload();
+                    }
+                })
+            }
+            else
+            {
+                return false;
+            }
+        });
+
+        $(document).on('click', '.block', function(){
+            var BidderID = $(this).attr("id");
+
+            var btn_action = "block";
+            if(confirm("Are you sure you want to block the bidder?"))
+            {
+                $.ajax({
+                    url:"../function/bidder_action.php",
+                    method:"POST",
+                    data:{BidderID:BidderID, btn_action:btn_action},
                     success:function(data)
                     {
                         $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
@@ -414,4 +421,5 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 
 
 </script>
+
 
