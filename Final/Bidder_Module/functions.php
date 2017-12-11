@@ -99,6 +99,7 @@ function user_login($user,$pass){
         session_start();
         $_SESSION['username']=$user;
         $_SESSION['password']=$pass;
+        $_SESSION['type']="bidder";
         header("location:Bidder UI/examples/dashboard.php");
     }
 
@@ -129,7 +130,7 @@ function register__bidder($name,$user,$passwordN,$userfile,$email,$contact){
     $sql = "INSERT INTO bidder (BidderID,TdFile,BidderKey,Name,Bemail,Bcontact) VALUES ('$user','$userfile','$passwordN','$name','$email',$contact)";
     $result=mysqli_query($conn,$sql);
     if(!$result){
-      echo mysql_error();
+      echo mysqli_error($conn);
     }else{
       echo '<script type="text/javascript">
         alert("Thank you for registering");

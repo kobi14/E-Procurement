@@ -1,3 +1,27 @@
+<?php
+include "../../functions.php";
+
+session_start();
+
+if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
+
+{
+
+
+    header('location:../../Bidder_Module/login.php');
+}elseif(isset($_SESSION['username'])){
+
+//    echo "<script type='text/javascript'>
+//
+//            alert('Hi,Successfully Login');
+//
+//
+//    </script>";
+}
+
+?>
+
+
 <!doctype html>
 <htmllang="en">
 <head>

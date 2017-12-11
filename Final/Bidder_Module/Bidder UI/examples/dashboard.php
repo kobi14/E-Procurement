@@ -1,3 +1,26 @@
+<?php
+
+include "../../functions.php";
+
+session_start();
+
+if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
+
+{
+
+
+header('location:../../Bidder_Module/login.php');
+}elseif(isset($_SESSION['username'])){
+
+echo "<script type='text/javascript'>
+
+    alert('Hi,Successfully Login');
+
+
+</script>";
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -91,12 +114,12 @@
 	                        <p>Notifications</p>
 	                    </a>
 	                </li>
-	                 <li>
-	                    <a href="followers.php">
-	                        <i class="material-icons text-gray">assistant_photo</i>
-	                        <p>Followers</p>
-	                    </a>
-	                </li>
+<!--	                 <li>-->
+<!--	                    <a href="followers.php">-->
+<!--	                        <i class="material-icons text-gray">assistant_photo</i>-->
+<!--	                        <p>Followers</p>-->
+<!--	                    </a>-->
+<!--	                </li>-->
 					<li class="active-pro">
 	                     <a href="http://localhost/e-procurement/UI/logout.php">
 	                        <i class="material-icons">unarchive</i>

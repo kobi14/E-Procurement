@@ -27,7 +27,7 @@ function user_loginopr($user,$pass){
         $_SESSION['username']=$user;
         $_SESSION['password']=$pass;
         $_SESSION['type']="op";
-        echo "hi";
+       // echo "hi";
 
         header("location:../Operator/view/dashboard.php");
     }
