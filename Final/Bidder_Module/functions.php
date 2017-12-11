@@ -148,9 +148,9 @@ function register__bidder($name,$user,$passwordN,$userfile,$email,$contact){
     if(!$result){
       echo mysqli_error($conn);
     }else{
-      echo '<script type="text/javascript">
-        alert("Thank you for registering");
-        </script>';
+      echo "<script type='text/javascript'>
+        alert('Thank you for registering');
+        </script>";
     }
 
     header("location:login.php");
@@ -167,9 +167,9 @@ function register__tec($name,$user,$passwordN,$about,$email,$contact,$spc){
     if(!$result){
       echo mysqli_error($conn);
     }else{
-      echo '<script type="text/javascript">
-        alert("Thank you for registering");
-        </script>';
+        echo "<script type='text/javascript'>
+        alert('Thank you for registering');
+        </script>";
     }
 
     header("location:login.php");
@@ -186,10 +186,13 @@ function register__pc($name,$user,$passwordN,$about,$email,$contact){
     if(!$result){
       echo mysqli_error($conn);
     }else{
-      echo '<script type="text/javascript">
-        alert("Thank you for registering");
-        </script>';
+        echo "<script type='text/javascript'>
+        alert('Thank you for registering');
+        </script>";
     }
+    echo "<script type='text/javascript'>
+        alert('Thank you for registering');
+        </script>";
 
     header("location:login.php");
 

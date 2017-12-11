@@ -1,5 +1,6 @@
 <?php
-
+include "../../connect.php";
+include '../../functions.php';
 
 
 session_start();
@@ -21,8 +22,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 }
 
 
-include "../../connect.php";
-include "../../functions.php";
+
 //session_start();
 $password1=$password2=$email=$contact=$user="";
 $errpass=$errpass1=$errpass2=$errmail=$errcontact="";
@@ -125,7 +125,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 				<div class="logo">
 					<a href="#" class="simple-text">
-						Bidder
+            <?php
+
+            $profile=$_SESSION['username'];
+            $sql="SELECT Name FROM bidder WHERE BidderID='$profile'";
+            $result=mysqli_query($conn,$sql);
+            $row=mysqli_fetch_assoc($result);
+            $name= $row['Name']; ?>
+
+						Bidder: <?php echo $name;  ?>
 					</a>
 				</div>
 
@@ -237,7 +245,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	                                    <div class="row">
 	                                        <div class="col-md-5">
                         <?php
-                        include "../../connect.php";
+
                         $profile=$_SESSION['username'];
                         $sql="SELECT * FROM bidder WHERE BidderID='$profile'";
                         $result=mysqli_query($conn,$sql);

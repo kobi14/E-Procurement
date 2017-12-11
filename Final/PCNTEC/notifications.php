@@ -176,7 +176,7 @@ if (isset($_SESSION['tec_data'])) {
 																			            <td><?php echo $row3['Name']?></td>
 																			            <td><?php echo $row1['BidderID']?></td>
 																			            <td><?php echo $row1['AvgScore']?></td>
-																			            <td class="text-right"><a href="<?php echo $row3['TdFile']; ?>">Download </a></td>
+																			            <td class="text-right"><a href="../Bidder_Module/<?php echo $row3['TdFile']; ?>" target="_blank">Download </a></td>
 
 																			        </tr>
 																						<?php

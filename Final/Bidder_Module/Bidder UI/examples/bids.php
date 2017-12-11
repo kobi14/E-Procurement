@@ -1,6 +1,7 @@
 <?php
 
 include "../../functions.php";
+include "../../connect.php";
 
 session_start();
 
@@ -62,7 +63,15 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 
 			<div class="logo">
 				<a href="#" class="simple-text">
-					Bidder
+          <?php
+
+          $profile=$_SESSION['username'];
+          $sql="SELECT Name FROM bidder WHERE BidderID='$profile'";
+          $result=mysqli_query($conn,$sql);
+          $row=mysqli_fetch_assoc($result);
+          $name= $row['Name']; ?>
+
+          Bidder: <?php echo $name;  ?>
 				</a>
 			</div>
 
@@ -130,22 +139,22 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 			<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse">
+					<button type="button" class="navbar-toggle" data-toggle="collapse">
 							<span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">My Dashboard</a>
+						<a class="navbar-brand" href="#">Welcome <?php echo  $_SESSION['username'];?></a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li>
+							<!--<li>
 								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="material-icons">dashboard</i>
 									<p class="hidden-lg hidden-md">Dashboard</p>
 								</a>
-							</li>
+							</li>-->
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="material-icons">notifications</i>
@@ -168,7 +177,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 							</li>
 						</ul>
 
-						<form class="navbar-form navbar-right" role="search">
+						<!--<form class="navbar-form navbar-right" role="search">
 							<div class="form-group  is-empty">
 								<input type="text" class="form-control" placeholder="Search">
 								<span class="material-input"></span>
@@ -176,7 +185,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 							<button type="submit" class="btn btn-white btn-round btn-just-icon">
 								<i class="material-icons">search</i><div class="ripple-container"></div>
 							</button>
-						</form>
+						</form>-->
 					</div>
 				</div>
 			</nav>
@@ -191,6 +200,22 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 	                               <!-- <p class="category">Created using Roboto Font Family</p>-->
 	                            </div>
 	                            <div class="card-content">
+                              <?php  $profile=$_SESSION['username'];
+                                $sql="SELECT * FROM bid WHERE BidderID='$profile'";
+                                $result=mysqli_query($conn,$sql);
+                                $row=mysqli_fetch_assoc($result);
+                                $status="";
+                                $status=$row['Status'];
+                                $currentstat="";
+                                if($status==0){
+                                  $currentstat="Not Decided";
+                                }else if($status==1){
+                                  $currentstat="Win";
+
+                                }else{
+                                  $currentstat="Loss";
+                                } ?>
+
 									<div id="typography">
 										<div class="title">
 											<h2>Info</h2>
@@ -199,50 +224,23 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 											<div class="card-content table-responsive">
 											<table class="table table-hover">
 												<thead>
-													<th>TenderID</th>
-													<th>Tender Owner</th>
-													<th>Status</th>
-													<th>Bidded Amount</th>
-													<th>Date</th>
+													<th>Bidder ID</th>
+													<th>Tender ID</th>
+                          <th>Tender File</th>
+													<th>Submitted Date</th>
+													<th>Submited Time</th>
+													<th>Results</th>
 
 												</thead>
 												<tbody>
 													<tr>
-													<td>T12345</td>
-													<td>Google Sri Lanka</td>
-													<td>Won</td>
-													<td>500000</td>
-													<td>22-11-2012</td>
+													<td><?php echo $row['BidderID']; ?></td>
+													<td><?php echo $row['TenderID']; ?></td>
+                          <td><?php echo '<a href="'.$row['BidFile'].'" target="_blank" class="btn btn-success btn-xs">View PDF</a>' ?></td>
+													<td><?php echo $row['sDate']; ?></td>
+													<td><?php echo $row['sTime'] ;?></td>
+													<td><?php echo $currentstat; ?></td>
 												</tr>
-												<tr>
-												<td>T12389</td>
-												<td>Microsodt Sri Lanka</td>
-												<td>Lost</td>
-												<td>15000000</td>
-												<td>22-10-2013</td>
-											</tr>
-											<tr>
-											<td>T12436</td>
-											<td>IBM Sri Lanka</td>
-											<td>Lost</td>
-											<td>800000</td>
-											<td>02-12-2014</td>
-										</tr>
-
-									<tr>
-									<td>T52436</td>
-									<td>Richardson</td>
-									<td>Won</td>
-									<td>5800000</td>
-									<td>02-12-2014</td>
-								</tr>
-								<tr>
-								<td>T89637</td>
-								<td>Airforce SL</td>
-								<td>Lost</td>
-								<td>960000</td>
-								<td>02-01-2015</td>
-							</tr>
 
 												</tbody>
 											</table>

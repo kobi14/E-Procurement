@@ -173,7 +173,7 @@ if (isset($_SESSION['pc_data'])) {
 																												 <td><?php echo $row3['Name']?></td>
 																												 <td><?php echo $row1['BidderID']?></td>
 																												 <td><?php echo $row1['AvgScore']?></td>
-																												 <td ><a href="../Bidder_Module/<?php echo $row3['TdFile']; ?>">Download </a></td>
+																												 <td ><a href="../Bidder_Module/<?php echo $row3['TdFile']; ?>" target="_blank">Download </a></td>
 																												 <td class="text-right"><div class="radio">
 																											      <label><input type="radio" name="optradio" value="<?php echo $bidderid; ?>" <?php if($bidwin==1){?> disabled	  <?php } ?>><b><b></label>
 																											    </div></td>

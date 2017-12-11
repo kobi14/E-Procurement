@@ -27,12 +27,47 @@ $userID=$_SESSION['username'];
                 $col="";
                 $tdate=$row['CDate'];
                 $ttime=$row['CTime'];
-                  if($tdate>=$date_now ){
+                if($tdate>$date_now ){ //To compare with current date
+
+                  $col="#FFFF00"; //Yellow color
+
+                  }
+                  else if($tdate==$date_now){
                     if($ttime>=$time){
-                    $col="#FFFF00";
+                      $col="#FFFF00";//yellow color
+                    }else {
+                      $col="#ADD8E6";//blue
+                      $tid=$row['TenderID'];
+                      $ttitle=$row['TenderTitle'];
+                      $tfile=$row['TenderFile'];
+                      $town=$row['TOwner'];
+                      $expD=$row['CDate'];
+                      $expT=$row['CDate'];
+                      $cat=$row['Category'];
+
+                      $ins="INSERT INTO pasttender VALUES('$tid','$ttitle','$tfile','$town','$expD','$expT','$cat')";
+                      $del="DELETE FROM tender where TenderID='$tid'";
+                      $result1=mysqli_query($conn,$ins);
+                      $result2=mysqli_query($conn,$del);
+
                     }
+
                   }else{
+
                     $col="#ADD8E6";
+                      $tid=$row['TenderID'];
+                      $ttitle=$row['TenderTitle'];
+                      $tfile=$row['TenderFile'];
+                      $town=$row['TOwner'];
+                      $expD=$row['CDate'];
+                      $expT=$row['CDate'];
+                      $cat=$row['Category'];
+                    $ins="INSERT INTO pasttender VALUES('$tid','$ttitle','$tfile','$town','$expD','$expT','$cat')";
+                    $del="DELETE FROM tender where TenderID='$tid'";
+                    $result1=mysqli_query($conn,$ins);
+                    $result2=mysqli_query($conn,$del); //Blue color
+                    //insert into past tenders
+                    //delete
                   }
 
                   echo "<tr bgcolor=$col>";
@@ -61,4 +96,7 @@ $userID=$_SESSION['username'];
                   echo "</tr>";
 
               }
-          ?>
+
+
+
+     ?>

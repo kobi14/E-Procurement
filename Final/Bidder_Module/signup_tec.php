@@ -140,24 +140,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
      <div class="row">
      	<div class="col s3">
-     		<table >
-     			<tr>
-     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; ">Announcements</button></td>
-     			</tr>
-
-          <tr>
-     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Location</button></td>
-     			</tr>
-          <tr>
-     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Organisation</button></td>
-     			</tr>
-          <tr>
-     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders Status</button></td>
-     			</tr>
-          <tr>
-     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Classification</button></td>
-     			</tr>
-     			</table>
+<!--     		<table >-->
+<!--     			<tr>-->
+<!--     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; ">Announcements</button></td>-->
+<!--     			</tr>-->
+<!---->
+<!--          <tr>-->
+<!--     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Location</button></td>-->
+<!--     			</tr>-->
+<!--          <tr>-->
+<!--     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Organisation</button></td>-->
+<!--     			</tr>-->
+<!--          <tr>-->
+<!--     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders Status</button></td>-->
+<!--     			</tr>-->
+<!--          <tr>-->
+<!--     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Classification</button></td>-->
+<!--     			</tr>-->
+<!--     			</table>-->
 
 
       	</div>
@@ -192,7 +192,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         										<span class="input-group-addon">
         											<i class="material-icons">face</i>
         										</span>
-        										<input type="text" class="form-control" name="name" placeholder="Name..." value="<?php echo $name; ?>" />
+        										<input type="text" class="form-control" style="font-size:20px;" name="name" placeholder="Name..." value="<?php echo $name; ?>" />
 												<span><font color='red'><?php echo $errname; ?></font></span>
         									</div>
 
@@ -200,7 +200,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         										<span class="input-group-addon">
         											<i class="material-icons">face</i>
         										</span>
-        										<input type="text" class="form-control"name="username" placeholder="User Name..." value="<?php echo $u_username; ?>" />
+        										<input type="text" class="form-control" style="font-size:20px;" name="username" placeholder="User Name..." value="<?php echo $u_username; ?>" />
 												<span><font color='red'><?php echo $errusername; ?></font></span>
         									</div>
 
@@ -208,7 +208,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="input-group-addon">
                               <i class="material-icons">phone</i>
                             </span>
-                            <input type="text" class="form-control" name="contact" placeholder="contact No...." value="<?php echo $contact; ?>" />
+                            <input type="text" class="form-control" name="contact" style="font-size:20px;" placeholder="contact No...." value="<?php echo $contact; ?>" />
 							<span><font color='red'><?php echo $errcontact; ?></font></span>
                           </div>
 
@@ -216,7 +216,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         										<span class="input-group-addon">
         											<i class="material-icons">email</i>
         										</span>
-        										<input type="email"  class="form-control  validate" name="email" placeholder="Email..." value="<?php echo $email; ?>" />
+        										<input type="email"  class="form-control  validate"  style="font-size:20px;" name="email" placeholder="Email..." value="<?php echo $email; ?>" />
 												 <span><font color='red'><?php echo $errmail; ?></font></span>
         									</div>
 
@@ -225,7 +225,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         										<span class="input-group-addon">
         											<i class="material-icons">lock_outline</i>
         										</span>
-        										<input type="password"  class="form-control" name="password1" placeholder="Password..." value="" />
+        										<input type="password"  style="font-size:20px;" class="form-control" name="password1" placeholder="Password..." value="" />
 												   <span><font color='red'><?php echo $errpass1; ?></font></span>
         									</div>
 
@@ -233,7 +233,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         										<span class="input-group-addon">
         											<i class="material-icons">lock_outline</i>
         										</span>
-        										<input type="password"  class="form-control" name="password2" placeholder="Confirm Password..." value="" />
+        										<input type="password" style="font-size:20px;" class="form-control" name="password2" placeholder="Confirm Password..." value="" />
 												   <span><font color='red'><?php echo $errpass2; ?></font></span>
         									</div>
 
@@ -241,7 +241,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="input-group-addon">
                               <i class="material-icons">account_circle</i>
                             </span>
-                            <textarea class="form-control" name="about" rows="2" value="" placeholder="About..."><?php echo $about; ?></textarea>
+                            <textarea class="form-control" name="about" style="font-size:20px;" rows="2" value="" placeholder="About..."><?php echo $about; ?></textarea>
                            <span><font color='red'></font></span>
                           </div>
 
