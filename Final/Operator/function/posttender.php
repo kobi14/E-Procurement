@@ -27,6 +27,35 @@ if($link == false){
 //$org = mysqli_real_escape_string($link, $_REQUEST['org']);
 //$ttype = mysqli_real_escape_string($link, $_REQUEST['ttype']);
 //$file = mysqli_real_escape_string($link, $_REQUEST['file1']);
+
+function validate_id($tid){
+
+    include 'connect.php';
+
+//    if (!preg_match("/^[a-zA-Z0-9]*$/",$tid)) {
+//        return  "Only letters and numbers allowed";
+//    }
+
+    $sql="SELECT * FROM tender WHERE TenderID='$tid' ";
+
+
+
+    $result = mysqli_query($conn,$sql);
+    if(!$result){
+        echo "Could not execute query".mysqli_error($conn);
+    }
+
+
+    if(mysqli_num_rows($result)==1){
+        return "tender already available";
+    } else{
+
+    }
+}
+
+
+
+
 $tid=$_POST['tenderId'];
 $bd=$_POST['biddate'];
 $bt=$_POST['bidtime'];
@@ -50,6 +79,10 @@ move_uploaded_file($_FILES['file1']['tmp_name'], $file);
 //}
 //$file="bidderinfo/".basename($_FILES["file1"]["name"]);
 // move_uploaded_file($_FILES["file1"]["tmp_name"],$file);
+
+
+
+
 $date = date("Y-m-d");
 
 $time=date("h:i:sa");
@@ -60,23 +93,19 @@ $sql = "INSERT INTO tender (TenderId,TenderTitle,TenderFile,TOwner,ODate,OTime,C
 //$sql="INSERT INTO demo (name,age) VALUES ('hi',23)";
 //$link->query($sql);
 
+$checkid=validate_id($tid);
 
 
-$q=mysqli_query($conn,$sql);
+if ($checkid==""){
 
+    $q=mysqli_query($conn,$sql);
 
-
-
-
-
-
-
-if($q){
+    if($q){
 
 
 
 
-    echo "<script type='text/javascript'>
+        echo "<script type='text/javascript'>
 
             alert('submitted successfully!')
 
@@ -88,9 +117,9 @@ if($q){
 
 
 
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-    echo "<script type='text/javascript'>
+    } else{
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+        echo "<script type='text/javascript'>
 
             alert('submitted unsuccessfully!')
 
@@ -99,7 +128,31 @@ if($q){
             }
             Redirect();
     </script>";
+    }
+
+
+}else{
+
+    echo "<script type='text/javascript'>
+
+            alert('Tender id already there')
+
+     function Redirect() {
+               window.location.href='../view/postTender.php';
+            }
+            Redirect();
+    </script>";
 }
+
+
+
+
+
+
+
+
+
+
 
 // close connection
 mysqli_close($conn);

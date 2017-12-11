@@ -274,12 +274,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	                                    </div>
 
 	                                         <div class="row">
-	                                        <div class="col-md-6">
-												<div class="form-group label-floating">
-													<label class="control-label">NIC</label>
-													<input type="text" class="form-control" value="">
-												</div>
-                      </div>
+<!--	                                        <div class="col-md-6">-->
+<!--												<div class="form-group label-floating">-->
+<!--													<label class="control-label">NIC</label>-->
+<!--													<input type="text" class="form-control" value="">-->
+<!--												</div>-->
+<!--                      </div>-->
 	                                       <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Contact</label>
