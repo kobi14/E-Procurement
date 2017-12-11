@@ -111,14 +111,50 @@ if (isset($_SESSION['tec_data'])) {
 			</nav>
 
 			<div class="content">
-
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class=" col-md-12 col-sm-12">
 							<div class="card card-stats">
+								<div class="card-header" data-background-color="orange">
+									<i class="material-icons">content_copy</i>
+								</div>
+								<h3>WELCOME! <?php echo $tec['TecName']; ?></h3>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="card" style="width: 30rem;">
+									  <img class="card-img-top" src="profile.png" alt="Card image cap">
+									  <div class="card-block" align="center">
+									    <h4 class="card-title">My Profile</h4>
+									    <p class="card-text">See your profile details and edit  your profile..</p>
+									    <a href="profile.php" class="btn btn-primary" style="background-color:green;">MY PROFILE</a>
+									  </div>
+									</div>
+								</div>
 
-							<h3 style="margin:20px;">Welcome,<?php echo $tec['TecName']?></h3>
+								<div class="col-md-4">
+									<div class="card" style="width: 30rem;">
+									  <img class="card-img-top" src="eval.png" alt="Card image cap">
+									  <div class="card-block" align="center">
+									    <h4 class="card-title">My Evaluations</h4>
+									    <p class="card-text">Evaluate the closed tenders..</p>
+									    <a href="evals.php" class="btn btn-primary" style="background-color:green;" >EVALUATIONS</a>
+									  </div>
+									</div>
+								</div>
 
+								<div class="col-md-4">
+									<div class="card" style="width: 30rem;">
+									  <img class="card-img-top" src="ranks.png" alt="Card image cap">
+									  <div class="card-block" align="center">
+									    <h4 class="card-title">Tender Ranks</h4>
+									    <p class="card-text">See the current ranks of tenders..</p>
+									    <a href="notifications.php" class="btn btn-primary" style="background-color:green;">TENDERS</a>
+									  </div>
+									</div>
+								</div>
+
+							</div>
 						</div>
 					</div>
 				</div>

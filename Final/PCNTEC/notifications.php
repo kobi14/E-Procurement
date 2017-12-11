@@ -112,7 +112,7 @@ if (isset($_SESSION['tec_data'])) {
 			</nav>
 			<?php
 				$tecid=$tec['TecID'];
-				$sql="SELECT TenderID FROM gaccess WHERE TecID='$tecid' AND Status=1 ";
+				$sql="SELECT TenderID FROM gaccess WHERE TecID='$tecid' AND Status=1  AND TenderID IN (SELECT TenderID FROM tender WHERE CDate < CURDATE()) ";
 				//$sql1 = "SELECT * FROM bid";
 
 				$result = mysqli_query($conn, $sql);
@@ -154,7 +154,7 @@ if (isset($_SESSION['tec_data'])) {
 																			            <th>Bidder Name</th>
 																			            <th>BidderID</th>
 																			            <th>Avg Score</th>
-																			            <th class="text-right">Bidder File</th>
+																			            <th class="text-right">Bidder Registration File</th>
 																			        </tr>
 																			    </thead>
 																					<?php

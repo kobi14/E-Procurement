@@ -36,7 +36,14 @@ if ($result1) {
   }
 }
 
-
+$sql3="SELECT * FROM finaleval WHERE TenderID='$tenderid' AND BidderID='$bidderid'";
+if($result3=mysqli_query($conn, $sql3)){
+  $row_cnt= mysqli_num_rows($result3);
+  if($row_cnt==0){
+    $sql4="INSERT INTO `finaleval` (`TenderID`, `BidderID`, `AvgScore`, `Docs`) VALUES ('$tenderid', '$bidderid', '', '')";
+    mysqli_query($conn, $sql4);
+  }
+}
 $sql2="UPDATE `finaleval` SET `AvgScore` = '$avgscore', `Docs` = '$docs' WHERE `finaleval`.`TenderID` = '$tenderid' AND `finaleval`.`BidderID` = '$bidderid'";
 
 if(mysqli_query($conn, $sql) && mysqli_query($conn, $sql2) ){

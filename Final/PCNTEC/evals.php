@@ -40,7 +40,7 @@ if (isset($_SESSION['tec_data'])) {
 <body>
 	<?php
 	  $tecid=$tec['TecID'];
-		$sql="SELECT * FROM bid WHERE TenderID IN (SELECT TenderID FROM gaccess WHERE TecID='$tecid' AND Status=1)";
+			$sql="SELECT * FROM bid WHERE TenderID IN (SELECT TenderID FROM gaccess WHERE TecID='$tecid' AND Status=1) AND TenderID in (SELECT TenderID FROM tender WHERE CDate < CURDATE())";
 		//$sql1 = "SELECT * FROM bid";
 
 		$result = mysqli_query($conn, $sql);
