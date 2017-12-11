@@ -30,7 +30,7 @@ if($link == false){
 
 function validate_id($tid){
 
-    include 'connect.php';
+    include 'conn.php';
 
 //    if (!preg_match("/^[a-zA-Z0-9]*$/",$tid)) {
 //        return  "Only letters and numbers allowed";
@@ -47,16 +47,25 @@ function validate_id($tid){
 
 
     if(mysqli_num_rows($result)==1){
-        return "tender already available";
+        echo "<script type='text/javascript'>
+
+            alert('Error Tender ID is already there ,Try Again Different TenderID')
+
+     function Redirect() {
+               window.location.href='../view/postTender.php';
+            }
+            Redirect();
+    </script>";
     } else{
 
     }
 }
 
 
+$tid = mysqli_real_escape_string($conn,$_POST['tenderId']);
+$checkid=validate_id($tid);
 
-
-$tid=$_POST['tenderId'];
+//$tid=$_POST['tenderId'];
 $bd=$_POST['biddate'];
 $bt=$_POST['bidtime'];
 $title=$_POST['title'];
@@ -93,7 +102,7 @@ $sql = "INSERT INTO tender (TenderId,TenderTitle,TenderFile,TOwner,ODate,OTime,C
 //$sql="INSERT INTO demo (name,age) VALUES ('hi',23)";
 //$link->query($sql);
 
-$checkid=validate_id($tid);
+
 
 
 if ($checkid==""){
@@ -118,7 +127,7 @@ if ($checkid==""){
 
 
     } else{
-        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+       // echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
         echo "<script type='text/javascript'>
 
             alert('submitted unsuccessfully!')
@@ -128,20 +137,12 @@ if ($checkid==""){
             }
             Redirect();
     </script>";
-    }
 
 
-}else{
 
-    echo "<script type='text/javascript'>
+}
 
-            alert('Tender id already there')
 
-     function Redirect() {
-               window.location.href='../view/postTender.php';
-            }
-            Redirect();
-    </script>";
 }
 
 

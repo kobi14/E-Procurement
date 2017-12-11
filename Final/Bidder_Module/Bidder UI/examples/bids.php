@@ -218,18 +218,18 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 
 									<div id="typography">
 										<div class="title">
-											<h2>Info</h2>
+											<h2></h2>
 										</div>
 										<div class="row">
 											<div class="card-content table-responsive">
 											<table class="table table-hover">
 												<thead>
-													<th>Bidder ID</th>
-													<th>Tender ID</th>
-                          <th>Tender File</th>
-													<th>Submitted Date</th>
-													<th>Submited Time</th>
-													<th>Results</th>
+                                                <th><b>Bidder ID</b></th>
+                                                    <th><b>Tender ID</b></th>
+                                                <th><b>Tender File</b></th>
+                                                    <th><b>Submitted Date</b></th>
+                                                    <th><b>Submited Time</b></th>
+                                                    <th><b>Results</b></th>
 
 												</thead>
 												<tbody>

@@ -1,6 +1,8 @@
 <?php
 include "../opfun.php";
 
+
+
 session_start();
 
 if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
@@ -118,6 +120,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 												<div class="form-group label-floating">
                                                     <label class="control-label"><b>Tender ID</b></label>
 													<input type="text" class="form-control" name="tenderId">
+
 												</div>
 											</div>
 											<div class="col-md-3">

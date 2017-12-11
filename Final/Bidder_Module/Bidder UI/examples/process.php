@@ -89,9 +89,9 @@ $userID=$_SESSION['username'];
                   $result=mysqli_query($conn,$sql);
 
                   if(mysqli_num_rows($result)>0){
-                    echo "<td> <a href=# ><b>Bidded<b></a></td>";
+                    echo "<td> <a href=# ><b><font color='red'>Bidded</font><b></a></td>";
                   }else{
-                  echo "<td> <a href='BidSub.php?id=$id & user=$userID' ><b>Bid<b></a></td>";
+                  echo "<td> <a href='BidSub.php?id=$id & user=$userID' ><b><font color='red'>Bid</font><b></a></td>";
                   }
                   echo "</tr>";
 

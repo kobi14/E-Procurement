@@ -1,6 +1,7 @@
 <?php
 include "../opfun.php";
-
+include_once "../function/conn.php";
+include_once "../function/conn.php";
 session_start();
 
 if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
@@ -179,7 +180,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 	                <div class="row">
 	                    <div class="col-md-12">
 	                        <div class="card">
-	                            <div class="card-header" data-background-color="purple">
+	                            <div class="card-header" data-background-color="blue">
 	                                <h4 class="title">Grant access to TEC member</h4>
 	                               <!-- <p class="category">Created using Roboto Font Family</p>-->
 	                            </div>
@@ -224,7 +225,73 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 
 
 
+                            <div class="content">
+                                <div class="container-fluid">
+                                    <div class="card">
+                                        <div class="card-header" data-background-color="blue">
+                                            <h4 class="title">TEC ACCESS</h4>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="row">
+                                                <h5></h5>
 
+
+
+
+
+                                                                    <div class="panel-body">
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                            <tr>
+
+                                                                                <th>TEC ID</th>
+                                                                                <th>TENDER ID</th>
+                                                                                <th>Status</th>
+
+                                                                            </tr>
+                                                                            </thead>
+
+                                                                            <tbody>
+                                                                            <?php
+                                                                            $sql1="SELECT * FROM `gaccess` ";
+                                                                            $result1 = mysqli_query($conn, $sql1);
+
+                                                                                    $result = mysqli_query($conn, $sql1);
+                                                                                  while(  $row = mysqli_fetch_assoc($result)){
+                                                                                    ?>
+                                                                                    <tr>
+
+                                                                                        <td><?php echo $row['TecID']?></td>
+                                                                                        <td><?php echo $row['TenderID']?></td>
+                                                                                        <?php
+                                                                                        if ($row['Status']==0){
+                                                                                       echo  '<td><label  class="btn btn-default btn-xs" disabled>Inactive</label></td>';
+                                                                                        }elseif ($row['Status']==1){
+                                                                                      echo  '<td><label   class="btn btn-success btn-xs " disabled>Active</label></td>';
+                                                                                        }
+                                                                                        ?>
+
+                                                                                    </tr>
+<?php } ?>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <div class="panel-footer"></div>
+
+
+
+
+
+
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
 
@@ -234,6 +301,8 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                 </div>
             </div>
         </div>
+
+
     
 
 
@@ -294,8 +363,23 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                         </div>
                         <div class="form-group">
                             <label>Enter Tender ID</label>
-                            <input type="text" name="tid" id="tid" class="form-control" required />
+                            <?php
+                            $get=mysqli_query($conn,"SELECT TenderID FROM tender ");
+                            $option = '';
+                            while($row = mysqli_fetch_assoc($get))
+                            {
+                                $option .= '<option  value = "'.$row['TenderID'].'">'.$row['TenderID'].'</option>';
+                            }
+                            ?>
+                            <select class="btn dropdown-toggle btn-lg" name="tid" id="tid">
+                                <?php echo $option; ?>
+                            </select>
+<!--                            <input type="text" name="tid" id="tid" class="form-control" required />-->
                         </div>
+<!--                        <div class="form-group">-->
+<!--                            <label>Enter Tender ID</label>-->
+<!--                            <input type="text" name="tid" id="tid" class="form-control" required />-->
+<!--                        </div>-->
                         <!--						<div class="form-group">-->
                         <!--							<label>Enter User Password</label>-->
                         <!--							<input type="password" name="user_password" id="user_password" class="form-control" required />-->
