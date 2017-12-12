@@ -1,5 +1,7 @@
 <?php
 include "../../functions.php";
+include "../../connect.php";
+
 
 session_start();
 
@@ -60,7 +62,15 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 
 			<div class="logo">
 				<a href="#" class="simple-text">
-					Bidder
+          <?php
+
+          $profile=$_SESSION['username'];
+          $sql="SELECT Name FROM bidder WHERE BidderID='$profile'";
+          $result=mysqli_query($conn,$sql);
+          $row=mysqli_fetch_assoc($result);
+          $name= $row['Name']; ?>
+
+          Bidder: <?php echo $name;  ?>
 				</a>
 			</div>
 
@@ -148,14 +158,14 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 								</ul>
 							</li>
 							<li>
-								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+								<!--<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
 	 							   <i class="material-icons">person</i>
 	 							   <p class="hidden-lg hidden-md">Profile</p>
-		 						</a>
+		 						</a>-->
 							</li>
 						</ul>
 
-						<form class="navbar-form navbar-right" role="search">
+						<!--<form class="navbar-form navbar-right" role="search">
 							<div class="form-group  is-empty">
 								<input type="text" class="form-control" placeholder="Search">
 								<span class="material-input"></span>
@@ -163,7 +173,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 							<button type="submit" class="btn btn-white btn-round btn-just-icon">
 								<i class="material-icons">search</i><div class="ripple-container"></div>
 							</button>
-						</form>
+						</form>-->
 					</div>
 				</div>
 			</nav>

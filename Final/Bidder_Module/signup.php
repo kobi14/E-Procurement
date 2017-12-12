@@ -130,10 +130,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          <i  class="brand-logo"><p id="demo"></p></i>
     		<ul class="nav navbar-nav right hide-on-med-and-down">
-				<li class="active"><a href="home.html">Home</a></li>
+				<li class="active"><a href="../../home/home.php">Home</a></li>
         		<li><a href="home.html">Contact Us</a></li>
-        		<li><a href="login.php">Sing In</a></li>
-        		<li><a href="singup.php">Sing Up</a></li>
+        		<li><a href="login.php">Sign In</a></li>
+        		<li><a href="signup.php">Sign Up</a></li>
 
     		</ul>
     	</div>
@@ -142,28 +142,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
      <div class="row">
-     	<div class="col s3">
-     		<table >
-     			<tr>
-     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; ">Announcements</button></td>
-     			</tr>
-
-          <tr>
-     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Location</button></td>
-     			</tr>
-          <tr>
-     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Organisation</button></td>
-     			</tr>
-          <tr>
-     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders Status</button></td>
-     			</tr>
-          <tr>
-     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Classification</button></td>
-     			</tr>
-     			</table>
-
-
-      	</div>
+         <div class="col s3"></div>
+<!--     		<table >-->
+<!--     			<tr>-->
+<!--     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; ">Announcements</button></td>-->
+<!--     			</tr>-->
+<!---->
+<!--          <tr>-->
+<!--     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Location</button></td>-->
+<!--     			</tr>-->
+<!--          <tr>-->
+<!--     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Organisation</button></td>-->
+<!--     			</tr>-->
+<!--          <tr>-->
+<!--     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders Status</button></td>-->
+<!--     			</tr>-->
+<!--          <tr>-->
+<!--     			<td><button class="btn btn-info" style="padding: 15px 30px; width: 200px; " >Tenders by Classification</button></td>-->
+<!--     			</tr>-->
+<!--     			</table>-->
+<!---->
+<!---->
+<!--      	</div>-->
           <div class="col s6">
 
         						<div class="card card-register">
@@ -195,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         										<span class="input-group-addon">
         											<i class="material-icons">face</i>
         										</span>
-        										<input type="text" class="form-control" name="name" placeholder="Busines Name..." value="<?php echo $name; ?>" />
+        										<input type="text" style="font-size:20px;" class="form-control" name="name" placeholder="Busines Name..." value="<?php echo $name; ?>" />
 												<span><font color='red'><?php echo $errname; ?></font></span>
         									</div>
 
@@ -203,7 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         										<span class="input-group-addon">
         											<i class="material-icons">face</i>
         										</span>
-        										<input type="text" class="form-control"name="username" placeholder="User Name..." value="<?php echo $u_username; ?>" />
+        										<input type="text" style="font-size:20px;" class="form-control"name="username" placeholder="User Name..." value="<?php echo $u_username; ?>" />
 												<span><font color='red'><?php echo $errusername; ?></font></span>
         									</div>
 
@@ -211,7 +211,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="input-group-addon">
                               <i class="material-icons">phone</i>
                             </span>
-                            <input type="text" class="form-control" name="contact" placeholder="contact No...." value="<?php echo $contact; ?>" />
+                            <input type="text" style="font-size:20px;"  class="form-control" name="contact" placeholder="contact No...." value="<?php echo $contact; ?>" />
 							<span><font color='red'><?php echo $errcontact; ?></font></span>
                           </div>
 
@@ -219,7 +219,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         										<span class="input-group-addon">
         											<i class="material-icons">email</i>
         										</span>
-        										<input type="email"  class="form-control  validate" name="email" placeholder="Email..." value="<?php echo $email; ?>" />
+        										<input type="email" style="font-size:20px;"  class="form-control  validate" name="email" placeholder="Email..." value="<?php echo $email; ?>" />
 												 <span><font color='red'><?php echo $errmail; ?></font></span>
         									</div>
 
@@ -228,7 +228,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         										<span class="input-group-addon">
         											<i class="material-icons">lock_outline</i>
         										</span>
-        										<input type="password"  class="form-control" name="password1" placeholder="Password..." value="" />
+        										<input type="password" style="font-size:20px;"  class="form-control" name="password1" placeholder="Password..." value="" />
 												   <span><font color='red'><?php echo $errpass1; ?></font></span>
         									</div>
 
@@ -236,14 +236,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         										<span class="input-group-addon">
         											<i class="material-icons">lock_outline</i>
         										</span>
-        										<input type="password"  class="form-control" name="password2" placeholder="Confirm Password..." value="" />
+        										<input type="password" style="font-size:20px;"  class="form-control" name="password2" placeholder="Confirm Password..." value="" />
 												   <span><font color='red'><?php echo $errpass2; ?></font></span>
         									</div>
 
                               <div class="file-field input-field">
                                       <div class="btn-info">
                                         <p style="text-align:center;">Upload Your Document File in "pdf"</p>
-                                        <input type="file" name="userfile" id="userfile" accept=".pdf">
+                                        <input type="file"  style="font-size:20px;" name="userfile" id="userfile" accept=".pdf">
                                         </div>
                                  <span><font color='red'><?php echo $errfilename;?></font></span>
                                       <div class="file-path-wrapper">
@@ -251,17 +251,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                       </div>
 
 
-                              <div class="checkbox">
-                								<label>
-                									<input type="checkbox" name="optionsCheckboxes">
-                									I Agree above details
-                								</label>
-                							</div>
+<!--                              <div class="checkbox">-->
+<!--                								<label>-->
+<!--                									<input type="checkbox" style="font-size:20px;" name="optionsCheckboxes">-->
+<!--                									I Agree above details-->
+<!--                								</label>-->
+<!--                							</div>-->
 
         								</div>
         								<div class="footer text-center">
-        									<button  type="submit" name="submit" value="Submit" class="btn btn-simple btn-primary btn-lg">Submit</button>
-                          <button type="reset" value="Reset" class="btn btn-simple btn-primary btn-lg">Reset</button>
+        									<button  type="submit" name="submit" value="Submit" class="btn btn-info btn-l">Sign Up</button>
+                          <button type="reset" value="Reset" class="btn btn-info btn-l">Reset</button>
         								</div>
         							</form>
 

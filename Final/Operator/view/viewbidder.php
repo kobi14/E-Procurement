@@ -3,7 +3,9 @@ include "../opfun.php";
 
 session_start();
 
-if(!isset($_SESSION['username']))
+
+if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
+
 
 {
 
@@ -23,7 +25,7 @@ if(!isset($_SESSION['username']))
 	<link rel="icon" type="image/png" href="../assets/img/favicon.png" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Operator Panel</title>
+	<title>CPO Panel</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -55,7 +57,7 @@ if(!isset($_SESSION['username']))
 
 			<div class="logo">
 				<a href="#" class="simple-text">
-					C.P.Operator
+                    CPO
                     <br>
                     <?php echo "WelCome : ".$_SESSION['username'] ; ?>
 				</a>
@@ -159,7 +161,7 @@ if(!isset($_SESSION['username']))
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header" data-background-color="blue">
-                                    <h4 class="title">Activite Tender </h4>
+                                    <h4 class="title">Access to Bidder </h4>
 
                                 </div>
                                 <div class="panel-body">

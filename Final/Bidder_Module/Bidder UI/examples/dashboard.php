@@ -1,6 +1,7 @@
 <?php
 
 include "../../functions.php";
+include "../../connect.php";
 
 session_start();
 
@@ -66,7 +67,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 <body>
 
 
-	<div class="wrapper">
+	<div class="wrapper" >
 
 	    <div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
 			<!--
@@ -77,7 +78,15 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 
 			<div class="logo">
 				<a href="#" class="simple-text">
-					Bidder
+          <?php
+
+          $profile=$_SESSION['username'];
+          $sql="SELECT Name FROM bidder WHERE BidderID='$profile'";
+          $result=mysqli_query($conn,$sql);
+          $row=mysqli_fetch_assoc($result);
+          $name= $row['Name']; ?>
+
+          Bidder: <?php echo $name;  ?>
 				</a>
 			</div>
 
@@ -108,12 +117,12 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 	                    </a>
 	                </li>
 	               <!-- -->
-	                <li>
-	                    <a href="notifications.php">
-	                        <i class="material-icons text-gray">notifications</i>
-	                        <p>Notifications</p>
-	                    </a>
-	                </li>
+<!--	                <li>-->
+<!--	                    <a href="notifications.php">-->
+<!--	                        <i class="material-icons text-gray">notifications</i>-->
+<!--	                        <p>Notifications</p>-->
+<!--	                    </a>-->
+<!--	                </li>-->
 <!--	                 <li>-->
 <!--	                    <a href="followers.php">-->
 <!--	                        <i class="material-icons text-gray">assistant_photo</i>-->
@@ -131,7 +140,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 	    </div>
 
 
-	    <div class="main-panel">
+	    <div class="main-panel" >
 			<nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
 					<div class="navbar-header">
@@ -145,12 +154,12 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li>
+							<!--<li>
 								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="material-icons">dashboard</i>
 									<p class="hidden-lg hidden-md">Dashboard</p>
 								</a>
-							</li>
+							</li>-->
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="material-icons">notifications</i>
@@ -180,17 +189,17 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 
 
 
-					<div class="chart-container">
-			<canvas id="mycanvas" width="1000" height="1000" ></canvas>
+					<div class="chart-container" >
+			<canvas id="mycanvas" width="500" height="1000" ></canvas>
 		</div>
 
 
 
 <div class="chart-container1">
-<canvas id="mycanvas1" width="500" height="500" align="center" ></canvas>
+<canvas id="mycanvas1" width="300" height="1000" align="center" ></canvas>
 </div>
 <div class="chart-container2">
-<canvas id="mycanvas2" width="600" height="500"></canvas>
+<canvas id="mycanvas2" width="500" height="1000"></canvas>
 </div>
 
 

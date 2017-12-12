@@ -1,9 +1,12 @@
 <?php
 include "../opfun.php";
 
+
+
 session_start();
 
-if(!isset($_SESSION['username']))
+if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
+
 
 {
 
@@ -21,7 +24,7 @@ if(!isset($_SESSION['username']))
 	<link rel="icon" type="image/png" href="../assets/img/favicon.png" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Operator Panel</title>
+	<title>CPO Panel</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -55,7 +58,7 @@ if(!isset($_SESSION['username']))
 
 			<div class="logo">
 				<a href="#" class="simple-text">
-					Operator
+                    CPO
                     <br>
                     <?php echo "WelCome : ".$_SESSION['username'] ; ?>
 				</a>
@@ -84,7 +87,7 @@ if(!isset($_SESSION['username']))
 	                <li>
 	                    <a href="viewbidder.php">
 	                        <i class="material-icons">bubble_chart</i>
-	                        <p>Post Winners</p>
+	                        <p>Access</p>
 	                    </a>
 	                </li>
 
@@ -117,6 +120,7 @@ if(!isset($_SESSION['username']))
 												<div class="form-group label-floating">
                                                     <label class="control-label"><b>Tender ID</b></label>
 													<input type="text" class="form-control" name="tenderId">
+
 												</div>
 											</div>
 											<div class="col-md-3">
