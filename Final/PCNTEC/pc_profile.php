@@ -44,7 +44,7 @@ if (isset($_SESSION['pc_data'])) {
 
 		        Tip 2: you can also add an image using data-image tag
 		    -->
-
+<!-- content area -->
 				<div class="logo">
 					<a href="#" class="simple-text">
 						PC Member
