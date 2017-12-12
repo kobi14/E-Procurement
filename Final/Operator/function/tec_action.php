@@ -30,11 +30,14 @@ if(isset($_POST['btn_action']))
         foreach($result as $row)
         {
             $output['spc'] = $row['Spc'];
-            //$output['tec_id'] = $row['TecID'];
+            $output['tec_id'] = $row['TecID'];
         }
         echo json_encode($output);
 
+
+
     }
+
 
 
     if($_POST['btn_action'] == 'delete')

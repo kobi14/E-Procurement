@@ -201,12 +201,6 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 										<table id="user_data" class="table table-bordered table-striped">
 											<thead>
 											<tr>
-												<!--<th>ID</th>-->
-												<!--<th>Email</th>-->
-												<!--<th>Name</th>-->
-												<!--<th>Status</th>-->
-												<!--<th>Edit</th>-->
-												<!--<th>Delete</th>-->
 												<th>Tec ID</th>
 												<th>Tec Name</th>
 												<th>Tec Mail</th>
@@ -303,7 +297,6 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
         </div>
 
 
-    
 
 
 
@@ -318,21 +311,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 				 												 Home
 				 										 </a>
 				 								 </li>
-				 								<!-- <li>
-				 										 <a href="#">
-				 												 Company
-				 										 </a>
-				 								 </li>
-				 								 <li>
-				 										 <a href="#">
-				 												 Portfolio
-				 										 </a>
-				 								 </li>
-				 								 <li>
-				 										 <a href="#">
-				 												Blog
-				 										 </a>
-				 								 </li>-->
+
 				 						 </ul>
 				 				 </nav>
 				 				 <p class="copyright pull-right">
@@ -355,7 +334,8 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                     <div class="modal-body">
                         <div class="form-group">
                             <label>TecID</label>
-                            <input type="text"  name="tec_id" id="tec_id" class="form-control" readonly="true" />
+                            <input type="text"  name="tec_id" id="tec_id"  class="form-control" readonly="true" />
+
                         </div>
                         <div class="form-group">
                             <label>TEC Specialized In</label>
@@ -363,16 +343,10 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                         </div>
                         <div class="form-group">
                             <label>Enter Tender ID</label>
-                            <?php
-                            $get=mysqli_query($conn,"SELECT TenderID FROM tender ");
-                            $option = '';
-                            while($row = mysqli_fetch_assoc($get))
-                            {
-                                $option .= '<option  value = "'.$row['TenderID'].'">'.$row['TenderID'].'</option>';
-                            }
-                            ?>
-                            <select class="btn dropdown-toggle btn-lg" name="tid" id="tid">
-                                <?php echo $option; ?>
+
+                            <select class="btn dropdown-toggle btn-lg"  >
+                                <?php include_once "../function/short.php";
+                                echo $option; ?>;
                             </select>
 <!--                            <input type="text" name="tid" id="tid" class="form-control" required />-->
                         </div>
@@ -460,6 +434,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
     <!--});-->
 <!--</script>-->
 
+
 <script>
     $(document).ready(function(){
 
@@ -483,50 +458,55 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
         });
 
 
-//
-//        $(document).on('submit', '#user_form', function(event){
-//            event.preventDefault();
-//            $('#action').attr('disabled','disabled');
-//            var form_data = $(this).serialize();
-//            $.ajax({
-//                url:"user_action.php",
-//                method:"POST",
-//                data:form_data,
-//                success:function(data)
-//                {
-//                    $('#user_form')[0].reset();
-//                    $('#userModal').modal('hide');
-//                    $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
-//                    $('#action').attr('disabled', false);
-//                    userdataTable.ajax.reload();
-//                }
-//            })
-//        });
-//
         $(document).on('click', '.update', function(){
             var TecID = $(this).attr("id");
             var btn_action = 'fetch_single';
             $.ajax({
                 url:"../function/tec_action.php",
+
                 method:"POST",
                 data:{TecID:TecID, btn_action:btn_action},
                 dataType:"json",
                 success:function(data)
                 {
                     $('#userModal').modal('show');
-                   // $('#tec_id').val(data.tec_id);
-                    $('#tid').val(data.tid);
+                    //$('#tec_id_').val(data.tec_id);
+                    //$('#tid').val(data.tid);
+                    //$name.val(data.tec_id);
+
                     $('#spc_').val(data.spc);
 
 
                     $('.modal-title').html("<i class='fa fa-pencil-square-o'></i>Give Grand Access");
                     $('#tec_id').val(TecID);
-                    //$('#action').val('Edit');
-                    //$('#btn_action').val('Edit');
+
 
                 }
             })
         });
+
+//        $(document).on('click', '.update', function(){
+//            var TecID = $(this).attr("id");
+//            var btn_action = 'fetch_single';
+//
+//            $.ajax({
+//                url:"../function/short.php",
+//
+//                method:"POST",
+//
+//                data:{TecID:TecID,btn_action:btn_action},
+//
+//                success:function(data)
+//                {
+//                    alert("hi");
+//
+//                }
+//
+//
+//
+//            })
+//       });
+
 
         $(document).on('click', '.delete', function(){
             var TecID = $(this).attr("id");
