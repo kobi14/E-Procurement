@@ -119,12 +119,12 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 	                        <p>Maps</p>
 	                    </a>
 	                </li>-->
-	                <li>
-	                    <a href="notifications.php">
-	                        <i class="material-icons text-gray">notifications</i>
-	                        <p>Notifications</p>
-	                    </a>
-	                </li>
+<!--	                <li>-->
+<!--	                    <a href="notifications.php">-->
+<!--	                        <i class="material-icons text-gray">notifications</i>-->
+<!--	                        <p>Notifications</p>-->
+<!--	                    </a>-->
+<!--	                </li>-->
 					<li class="active-pro">
                         <a href="../../logout.php">
 	                        <i class="material-icons">unarchive</i>

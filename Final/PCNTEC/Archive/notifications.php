@@ -138,10 +138,7 @@ if (isset($_SESSION['tec_data'])) {
 														  <div class="panel panel-default">
 														    <div class="panel-heading">
 														      <h4 class="panel-title">
-														        <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo $num ?>">
-																			<p>Tender ID: <?php echo $row['TenderID'];?>
-																				<span style="float:right;"><i class="material-icons">play_for_work</i></span> </p>
-																			</p>
+														        <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo $num ?>">Tender ID: <?php echo $row['TenderID'];?>
 
 
 
@@ -157,7 +154,6 @@ if (isset($_SESSION['tec_data'])) {
 																			            <th>Bidder Name</th>
 																			            <th>BidderID</th>
 																			            <th>Avg Score</th>
-																									<th>Evaluate Files</th>
 																			            <th class="text-right">Bidder Registration File</th>
 																			        </tr>
 																			    </thead>
@@ -165,8 +161,6 @@ if (isset($_SESSION['tec_data'])) {
 																						$tenid=$row['TenderID'];
 																						$sql1="SELECT * FROM `finaleval` WHERE TenderID='$tenid' ORDER BY `finaleval`.`AvgScore` DESC";
 																						$result1 = mysqli_query($conn, $sql1);
-
-
 																					?>
 																			    <tbody>
 																						<?php if($result1){
@@ -175,28 +169,13 @@ if (isset($_SESSION['tec_data'])) {
 																								$bidderid=$row1['BidderID'];
 																								$sql3="SELECT * FROM bidder WHERE BidderID='$bidderid'";
 																								$result3 = mysqli_query($conn, $sql3);
-																								$row3 = mysqli_fetch_assoc($result3);
-
-																								$sql2="SELECT `TecID`,`EvaluateFile` FROM `teceval`WHERE `TenderID`='$tenid' and BidderID='$bidderid'";
-																								$result2 = mysqli_query($conn, $sql2);
+																								$row3 = mysqli_fetch_assoc($result3)
 																							?>
 																			        <tr>
 																			            <td class="text-center"><?php echo $num1; ?></td>
 																			            <td><?php echo $row3['Name']?></td>
 																			            <td><?php echo $row1['BidderID']?></td>
 																			            <td><?php echo $row1['AvgScore']?></td>
-																									<td>
-																										<?php
-																											while ($row2 = mysqli_fetch_assoc($result2)){
-																												echo $row2["TecID"]." : ";
-																												?>
-																												<a href="../Bidder_Module/<?php echo $row3['TdFile']; ?>" target="_blank">Download </a><br>
-																												<?php
-
-																											}
-																										?>
-
-																									</td>
 																			            <td class="text-right"><a href="../Bidder_Module/<?php echo $row3['TdFile']; ?>" target="_blank">Download </a></td>
 
 																			        </tr>

@@ -161,7 +161,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header" data-background-color="blue">
-                                    <h4 class="title">Activite Tender </h4>
+                                    <h4 class="title">Access to Bidder </h4>
 
                                 </div>
                                 <div class="panel-body">

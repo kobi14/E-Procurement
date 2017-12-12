@@ -102,12 +102,12 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
 	                    </a>
 	                </li>
 	               <!-- -->
-	                <li>
-	                    <a href="notifications.php">
-	                        <i class="material-icons text-gray">notifications</i>
-	                        <p>Notifications</p>
-	                    </a>
-	                </li>
+<!--	                <li>-->
+<!--	                    <a href="notifications.php">-->
+<!--	                        <i class="material-icons text-gray">notifications</i>-->
+<!--	                        <p>Notifications</p>-->
+<!--	                    </a>-->
+<!--	                </li>-->
 <!--	                <li>-->
 <!--	                    <a href="followers.php">-->
 <!--	                        <i class="material-icons text-gray">assistant_photo</i>-->

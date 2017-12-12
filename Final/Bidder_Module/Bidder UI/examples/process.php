@@ -46,8 +46,9 @@ $userID=$_SESSION['username'];
                       $cat=$row['Category'];
 
                       $ins="INSERT INTO pasttender VALUES('$tid','$ttitle','$tfile','$town','$expD','$expT','$cat')";
+                        $result1=mysqli_query($conn,$ins);
                       $del="DELETE FROM tender where TenderID='$tid'";
-                      $result1=mysqli_query($conn,$ins);
+
                       $result2=mysqli_query($conn,$del);
 
                     }
@@ -63,8 +64,9 @@ $userID=$_SESSION['username'];
                       $expT=$row['CDate'];
                       $cat=$row['Category'];
                     $ins="INSERT INTO pasttender VALUES('$tid','$ttitle','$tfile','$town','$expD','$expT','$cat')";
+                      $result1=mysqli_query($conn,$ins);
                     $del="DELETE FROM tender where TenderID='$tid'";
-                    $result1=mysqli_query($conn,$ins);
+
                     $result2=mysqli_query($conn,$del); //Blue color
                     //insert into past tenders
                     //delete

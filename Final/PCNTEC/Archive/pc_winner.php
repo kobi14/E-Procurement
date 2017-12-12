@@ -131,10 +131,8 @@ if (isset($_SESSION['pc_data'])) {
 																		 <div class="panel panel-default">
 																			 <div class="panel-heading">
 																				 <h4 class="panel-title">
-																					 <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo $num ?>">
-																						 <p>Tender ID: <?php echo $row['TenderID'];?>
-																						 <span style="float:right;"><?php if($bidwin==1){?> <i class="material-icons">done</i> <?php }else{?><i class="material-icons">play_for_work</i><?php }?></span> </p>
-																						 </p>
+																					 <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo $num ?>">Tender ID: <?php echo $row['TenderID'];?>
+
 
 
 																					 </a>
@@ -149,7 +147,6 @@ if (isset($_SESSION['pc_data'])) {
 																												 <th>Bidder Name</th>
 																												 <th>BidderID</th>
 																												 <th>Avg Score</th>
-																												 <th>Evaluate Files</th>
 																												 <th>Bidder Registration File</th>
 																												 <th>Select Winner</th>
 
@@ -170,29 +167,13 @@ if (isset($_SESSION['pc_data'])) {
 																											 //pass the winner update quary
 																											 $sql4="UPDATE `bid` SET `Status` = '1' WHERE `bid`.`BidderID` = '$bidderid' AND `bid`.`TenderID` = '$tenid'";
 
-																											 $sql2="SELECT `TecID`,`EvaluateFile` FROM `teceval`WHERE `TenderID`='$tenid' and BidderID='$bidderid'";
-			 																								 $result2 = mysqli_query($conn, $sql2);
-
 																										 ?>
 																										 <tr>
 																												 <td class="text-center"><?php echo $num1; ?></td>
 																												 <td><?php echo $row3['Name']?></td>
 																												 <td><?php echo $row1['BidderID']?></td>
 																												 <td><?php echo $row1['AvgScore']?></td>
-																												 <td>
-																													 <?php
-																														 while ($row2 = mysqli_fetch_assoc($result2)){
-																															 echo $row2["TecID"]." : ";
-																															 ?>
-																															 <a href="../Bidder_Module/<?php echo $row3['TdFile']; ?>" target="_blank">Download </a><br>
-																															 <?php
-
-																														 }
-																													 ?>
-
-
-																												 </td>
-																												 <td ><a href="../Bidder_Module/<?php echo $row3['TdFile']; ?>">Download </a></td>
+																												 <td ><a href="../Bidder_Module/<?php echo $row3['TdFile']; ?>" target="_blank">Download </a></td>
 																												 <td class="text-right"><div class="radio">
 																											      <label><input type="radio" name="optradio" value="<?php echo $bidderid; ?>" <?php if($bidwin==1){?> disabled	  <?php } ?>><b><b></label>
 																											    </div></td>
