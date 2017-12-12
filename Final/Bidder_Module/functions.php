@@ -84,24 +84,40 @@ function user_login($user,$pass){
       $sql="SELECT * FROM bidder WHERE bidderID='$user' AND bidderKey='$pass' ";
 
 
+        $block="SELECT Status FROM bidder WHERE bidderID='$user '";
+        $result2 = mysqli_query($conn,$block);
+        $row2=mysqli_fetch_assoc($result2);
+        if ($row2['Status']==0){
+            echo "<script type='text/javascript'>
+
+            alert('You are not allow to access The System , Contact the C.P.O');
 
 
-    $result = mysqli_query($conn,$sql);
-    if(!$result){
-      echo "Could not execute query".mysqli_error();
-    }
+    </script>";
+        }else
+            {
+
+            $result = mysqli_query($conn,$sql);
+            if(!$result){
+                echo "Could not execute query".mysqli_error();
+            }
 
 
-    if(mysqli_num_rows($result)==0){
-        return "Invalid Username/Password";
-    } else{
-        echo "User Logged In";
-        session_start();
-        $_SESSION['username']=$user;
-        $_SESSION['password']=$pass;
-        $_SESSION['type']="bidder";
-        header("location:Bidder UI/examples/dashboard.php");
-    }
+            if(mysqli_num_rows($result)==0){
+                return "Invalid Username/Password";
+            } else{
+                echo "User Logged In";
+                session_start();
+                $_SESSION['username']=$user;
+                $_SESSION['password']=$pass;
+                $_SESSION['type']="bidder";
+                header("location:Bidder UI/examples/dashboard.php");
+            }
+
+        }
+
+
+
 
 
 }
@@ -132,9 +148,9 @@ function register__bidder($name,$user,$passwordN,$userfile,$email,$contact){
     if(!$result){
       echo mysqli_error($conn);
     }else{
-      echo '<script type="text/javascript">
-        alert("Thank you for registering");
-        </script>';
+      echo "<script type='text/javascript'>
+        alert('Thank you for registering');
+        </script>";
     }
 
     header("location:login.php");
@@ -151,9 +167,9 @@ function register__tec($name,$user,$passwordN,$about,$email,$contact,$spc){
     if(!$result){
       echo mysqli_error($conn);
     }else{
-      echo '<script type="text/javascript">
-        alert("Thank you for registering");
-        </script>';
+        echo "<script type='text/javascript'>
+        alert('Thank you for registering');
+        </script>";
     }
 
     header("location:login.php");
@@ -170,10 +186,13 @@ function register__pc($name,$user,$passwordN,$about,$email,$contact){
     if(!$result){
       echo mysqli_error($conn);
     }else{
-      echo '<script type="text/javascript">
-        alert("Thank you for registering");
-        </script>';
+        echo "<script type='text/javascript'>
+        alert('Thank you for registering');
+        </script>";
     }
+    echo "<script type='text/javascript'>
+        alert('Thank you for registering');
+        </script>";
 
     header("location:login.php");
 

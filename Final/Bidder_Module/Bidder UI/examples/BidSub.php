@@ -49,7 +49,7 @@ session_start();
             <div class="col-md-6">
 
 							<div class="card">
-								<div class="card-header" data-background-color="blue">
+								<div class="card-header" data-background-color="purple">
 									<h4 class="title">Bid Submission </h4>
 									<p class="category">Submit Bid Details</p>
 								</div>

@@ -108,10 +108,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     		<ul class="nav navbar-nav">
-				<li class="active"><a href="home.html">Home</a></li>
+				<li class="active"><a href="../../home/home.php">Home</a></li>
         		<li><a href="#">Contact Us</a></li>
-        		<li><a href="login.php">Sing In</a></li>
-        		<li><a href="signup.php">Sing Up</a></li>
+        		<li><a href="login.php">Sign In</a></li>
+        		<li><a href="signup.php">Sign Up</a></li>
 
     		</ul>
     	</div>
