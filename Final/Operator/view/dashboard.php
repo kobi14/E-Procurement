@@ -259,7 +259,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><i class="fa fa-plus"></i> Add User</h4>
+                        <h4 class="modal-title"><i class="fa fa-plus"></i> </h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">

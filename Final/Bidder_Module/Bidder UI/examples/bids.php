@@ -203,7 +203,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
                               <?php  $profile=$_SESSION['username'];
                                 $sql="SELECT * FROM bid WHERE BidderID='$profile'";
                                 $result=mysqli_query($conn,$sql);
-                                $row=mysqli_fetch_assoc($result);
+                                while($row=mysqli_fetch_assoc($result)){;
                                 $status="";
                                 $status=$row['Status'];
                                 $currentstat="";
@@ -239,7 +239,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="bidder") )
                           <td><?php echo '<a href="'.$row['BidFile'].'" target="_blank" class="btn btn-success btn-xs">View PDF</a>' ?></td>
 													<td><?php echo $row['sDate']; ?></td>
 													<td><?php echo $row['sTime'] ;?></td>
-													<td><?php echo $currentstat; ?></td>
+													<td><?php echo $currentstat; }?></td>
 												</tr>
 
 												</tbody>

@@ -10,8 +10,9 @@
 
 
 //bidder_fetch.php
+//json library bidder table
 
-//$conn = new PDO('mysql:host=localhost;dbname=procurement', 'root', '');
+
 include "dbPDO.php";
 
 $query = '';
@@ -67,7 +68,7 @@ foreach($result as $row)
     $sub_array[] = $row['Bemail'];
     $sub_array[] = $row['Bcontact'];
     if ($row['Status']==0){
-        $sub_array[] = '<label  class="btn btn-default btn-xs" disabled>Inactive</label>';
+        $sub_array[] = '<label  class="btn btn-default btn-xs">Inactive</label>';
     }elseif ($row['Status']==1){
         $sub_array[] = '<label   class="btn btn-success btn-xs " disabled>Active</label>';
     }

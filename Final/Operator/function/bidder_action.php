@@ -10,11 +10,12 @@
 
     include "dbPDO.php";
 
+//bidder table actions
 
-
-
+//when click bidder table button blow code will be execute
 if(isset($_POST['btn_action'])) {
 
+    //when click delete btn
 
     if($_POST['btn_action'] == 'delete')
     {
@@ -36,6 +37,9 @@ if(isset($_POST['btn_action'])) {
     </script>";
         }
     }
+
+    //when click unblock button
+
     if($_POST['btn_action'] == 'unblock')
     {
 
@@ -58,6 +62,10 @@ if(isset($_POST['btn_action'])) {
     </script>";
         }
     }
+
+
+    //when click block button
+
     if($_POST['btn_action'] == 'block')
     {
 

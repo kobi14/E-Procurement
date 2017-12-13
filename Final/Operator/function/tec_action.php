@@ -15,8 +15,9 @@ include "dbPDO.php";
 if(isset($_POST['btn_action']))
 {
 
-    if($_POST['btn_action'] == 'fetch_single')
+    if($_POST['btn_action'] == 'fetch_singl')
     {
+
         $query = "
 		SELECT * FROM tec WHERE  TecID = :tec_id
 		";
@@ -34,14 +35,17 @@ if(isset($_POST['btn_action']))
         }
         echo json_encode($output);
 
-
-
     }
-
+//    if($_POST['btn_action'] == 'select')
+//    {
+//
+//    }
 
 
     if($_POST['btn_action'] == 'delete')
     {
+
+
 
         $query = "
 		DELETE  FROM tec
@@ -69,12 +73,20 @@ if(isset($_POST['submit']))
 
     {
 
+
+        //$sql="SELECT Status FROM gaccess WHERE TenderID='".$_POST["tid"]."' ";
+
+        $query1 = "
+			UPDATE gaccess SET 
+				Status = 1
+				
+				 
+				WHERE TecID = '".$_POST["tec_id"]."' AND TenderID='".$_POST["tid"]."'
+			";
+
         $tid=$_POST['tid'];
         $tecid=$_POST['tec_id'];
         $sts=1;
-
-
-
 
         $query = "
                 INSERT INTO gaccess (TecID,TenderID,Status)
@@ -85,9 +97,28 @@ if(isset($_POST['submit']))
         echo 'error';
 
     }
+    $statement1=$conn->prepare($query1);
     $statement = $conn->prepare($query);
     $statement->execute();
+    $statement1->execute();
     $result = $statement->fetchAll();
+    $result2=$statement1->fetchAll();
+
+    if(isset($result2))
+    {
+        echo "<script type='text/javascript'>
+                
+                alert('submitted successfully!');
+                
+                function Redirect() {
+               window.location.href='../view/AccTo.php';
+            }
+            Redirect();
+        
+         
+        </script>";
+
+    }
     if(isset($result))
     {
         echo "<script type='text/javascript'>

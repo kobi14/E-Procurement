@@ -333,6 +333,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+
                             <label>TecID</label>
                             <input type="text"  name="tec_id" id="tec_id"  class="form-control" readonly="true" />
 
@@ -341,11 +342,17 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                             <label>TEC Specialized In</label>
                             <input type="text" name="spc" id="spc_" class="form-control" disabled />
                         </div>
+
+<!--                        <button type="button" name="select"   class="btn btn-warning btn-xs select">Access</button>-->
+
+
                         <div class="form-group">
                             <label>Enter Tender ID</label>
 
-                            <select class="btn dropdown-toggle btn-lg"  >
+                            <select class="btn dropdown-toggle" >
                                 <?php include_once "../function/short.php";
+                                //echo  $xx;
+
                                 echo $option; ?>;
                             </select>
 <!--                            <input type="text" name="tid" id="tid" class="form-control" required />-->
@@ -459,8 +466,37 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
 
 
         $(document).on('click', '.update', function(){
+            var TecI = $(this).attr("id");
+            var btn_action = "select";
+
+            $.ajax({
+                url:"../function/short.php",
+
+                method:"POST",
+
+                data:{TecI:TecI,btn_action:btn_action},
+
+
+
+                success:function(data)
+                {
+                    $('TecID').val(TecI);
+                    // $('#userModal').modal('show');
+                    alert("hi");
+
+                    // window.location.href = "short.php?xxx=" + TecID;
+
+                }
+
+
+
+            })
+        });
+
+
+        $(document).on('click', '.update', function(){
             var TecID = $(this).attr("id");
-            var btn_action = 'fetch_single';
+            var btn_action = 'fetch_singl';
             $.ajax({
                 url:"../function/tec_action.php",
 
@@ -471,7 +507,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                 {
                     $('#userModal').modal('show');
                     //$('#tec_id_').val(data.tec_id);
-                    //$('#tid').val(data.tid);
+                    $('#tid').val(data.tid);
                     //$name.val(data.tec_id);
 
                     $('#spc_').val(data.spc);
@@ -485,27 +521,7 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
             })
         });
 
-//        $(document).on('click', '.update', function(){
-//            var TecID = $(this).attr("id");
-//            var btn_action = 'fetch_single';
-//
-//            $.ajax({
-//                url:"../function/short.php",
-//
-//                method:"POST",
-//
-//                data:{TecID:TecID,btn_action:btn_action},
-//
-//                success:function(data)
-//                {
-//                    alert("hi");
-//
-//                }
-//
-//
-//
-//            })
-//       });
+
 
 
         $(document).on('click', '.delete', function(){
@@ -522,6 +538,12 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                     {
                         $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
                         userdataTable.ajax.reload();
+
+
+                        //alert('Deleted successfully!');
+
+
+
                     }
                 })
             }
@@ -530,6 +552,9 @@ if(!isset($_SESSION['username']) || ($_SESSION['type']!="op") )
                 return false;
             }
         });
+
+
+
 
 
 //        $(document).on('click', '.update', function(){

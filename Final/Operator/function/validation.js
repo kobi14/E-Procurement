@@ -2,7 +2,7 @@
  * Created by kobi.ktk on 12/3/17.
  */
 
-//alert("hi");
+//POST TENDER'S Validation part
 
 function validate() {
 

@@ -160,7 +160,7 @@ Password <input type="password" name="pass" placeholder="Password..." value="<?p
 											<i class="material-icons">face</i>
 										</span>
 										<input type="email" class="form-control" id="mail" name="uname" placeholder="Email.." value="" />
-										<span><?php// echo $errusername; ?></span>
+										<span><?php echo $errusername; ?></span>
 									</div>
 
 
